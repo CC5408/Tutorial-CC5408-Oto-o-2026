@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://dvhkimwoy5bag"]
+
+[ext_resource type="FontFile" uid="uid://c2p1yc65ux6mt" path="res://fonts/BoldPixels.ttf" id="1_d4nwg"]
+
+[resource]
+default_font = ExtResource("1_d4nwg")
+default_font_size = 32
+MarginContainer/constants/margin_bottom = 32
+MarginContainer/constants/margin_left = 32
+MarginContainer/constants/margin_right = 32
+MarginContainer/constants/margin_top = 32
+Title/base_type = &"Label"
+Title/font_sizes/font_size = 64

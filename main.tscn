@@ -35,22 +35,23 @@ scale = Vector2(9.480001, 1)
 texture = ExtResource("1_ig7tw")
 
 [node name="Ball" parent="." unique_id=903449987 instance=ExtResource("2_0xm2m")]
-position = Vector2(178, 340)
+position = Vector2(-2068, -1)
 
 [node name="Ball2" parent="." unique_id=1980400453 instance=ExtResource("2_0xm2m")]
-position = Vector2(929, 78)
+position = Vector2(-1317, -263)
 
 [node name="Ball3" parent="." unique_id=685290580 instance=ExtResource("2_0xm2m")]
-position = Vector2(1056, -128)
+position = Vector2(-1190, -469)
 
 [node name="Ball4" parent="." unique_id=508441137 instance=ExtResource("2_0xm2m")]
-position = Vector2(420, 165)
+position = Vector2(-1826, -176)
 
 [node name="Player" parent="." unique_id=111671453 instance=ExtResource("3_h2yge")]
-position = Vector2(544, 329)
+position = Vector2(577, 138)
 scale = Vector2(1.0571793, 1.203636)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=103799084]
+position = Vector2(-551, -137)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=850947101]
 position = Vector2(-77, 517)
