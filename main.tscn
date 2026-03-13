@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://l5mq12bpttw5"]
+
+[ext_resource type="Script" uid="uid://73gnung8y32p" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://dki0qrnh46vy0" path="res://icon.svg" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://dnsssi48vuhe8" path="res://ball.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dc1g2sfbw4xhv" path="res://player.tscn" id="3_h2yge"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7dm0k"]
+size = Vector2(1151.5, 118)
+
+[node name="Main" type="Node2D" unique_id=867226126]
+script = ExtResource("1_1bvp3")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=727525281]
+position = Vector2(489, 586)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=307400211]
+position = Vector2(23.25, -2)
+shape = SubResource("RectangleShape2D_7dm0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=1756482789]
+scale = Vector2(9.480001, 1)
+texture = ExtResource("1_ig7tw")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=896435022]
+position = Vector2(1045, 276)
+rotation = -1.131032
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=2112005299]
+position = Vector2(23.25, -2)
+shape = SubResource("RectangleShape2D_7dm0k")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2" unique_id=1971845498]
+scale = Vector2(9.480001, 1)
+texture = ExtResource("1_ig7tw")
+
+[node name="Ball" parent="." unique_id=903449987 instance=ExtResource("2_0xm2m")]
+position = Vector2(178, 340)
+
+[node name="Ball2" parent="." unique_id=1980400453 instance=ExtResource("2_0xm2m")]
+position = Vector2(929, 78)
+
+[node name="Ball3" parent="." unique_id=685290580 instance=ExtResource("2_0xm2m")]
+position = Vector2(1056, -128)
+
+[node name="Ball4" parent="." unique_id=508441137 instance=ExtResource("2_0xm2m")]
+position = Vector2(420, 165)
+
+[node name="Player" parent="." unique_id=111671453 instance=ExtResource("3_h2yge")]
+position = Vector2(544, 329)
+scale = Vector2(1.0571793, 1.203636)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=103799084]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=850947101]
+position = Vector2(-77, 517)
+polygon = PackedVector2Array(-45, -28, 0, -148, 72, -141, 109, 53, 24, 69, 29, 17)
+
+[node name="Icon" type="Sprite2D" parent="Area2D" unique_id=805577434]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(-66, 466)
+rotation = 3.0936778
+scale = Vector2(1, 2.7391014)
+texture = ExtResource("1_ig7tw")
