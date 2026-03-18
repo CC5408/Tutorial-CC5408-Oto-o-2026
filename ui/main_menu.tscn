@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://byk7mffodrktd"]
 
 [ext_resource type="Script" uid="uid://cp27jtqcg8aov" path="res://ui/main_menu.gd" id="1_t7e0r"]
+[ext_resource type="AudioStream" uid="uid://dwycqvpnda2dx" path="res://sounds/夜の砂漠.mp3" id="2_0dkrt"]
 
 [node name="MainMenu" type="Control" unique_id=406316603]
 layout_mode = 3
@@ -62,3 +63,9 @@ text = "Credits"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1205334936]
+stream = ExtResource("2_0dkrt")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
