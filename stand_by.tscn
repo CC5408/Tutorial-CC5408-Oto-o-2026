@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://jc8li7siyq28"]
+
+[ext_resource type="Script" uid="uid://blc2n0fagbbtn" path="res://stand_by.gd" id="1_4d0vx"]
+[ext_resource type="Texture2D" uid="uid://bwk0mgo4wk1nf" path="res://sprites/a.jpg" id="1_vd4b8"]
+
+[node name="StandBy" type="Node2D" unique_id=200083644]
+script = ExtResource("1_4d0vx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=503321010]
+position = Vector2(161, 157)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_vd4b8")

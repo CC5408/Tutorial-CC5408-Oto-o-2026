@@ -4,9 +4,11 @@ extends CharacterBody2D
 @export var jump_speed = 600
 @export var acceleration = 300
 @export var bullet_scene: PackedScene
+@onready var jump_timer: Timer = $JumpTimer
 
 var max_health = 20
 var health = 20
+var _was_on_floor: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -15,23 +17,38 @@ var health = 20
 @onready var jump_stream_player: AudioStreamPlayer = $JumpStreamPlayer
 @onready var hitbox_component: HitboxComponent = $Pivot/HitboxComponent
 @onready var bullet_spawn_marker: Marker2D = $Pivot/BulletSpawnMarker
+@onready var coyote_timer: Timer = $CoyoteTimer
+
 
 
 func _ready() -> void:
-	animation_player.play("run")
 	hitbox_component.damage_dealt.connect(_on_damage_dealt)
 
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("test"):
+		LevelManager.next_level()
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
-		
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		velocity.y = -jump_speed
+	
+	if not is_on_floor() and _was_on_floor:
+		coyote_timer.start()
+	
+	if (is_on_floor() or not coyote_timer.is_stopped()) and Input.is_action_just_pressed("jump") and jump_timer.is_stopped():
+		jump_timer.start()
 		jump_stream_player.play()
+	if Input.is_action_just_released("jump"):
+		jump_timer.stop()
+	if not jump_timer.is_stopped():
+		#velocity.y = -jump_speed * (jump_timer.time_left / jump_timer.wait_time)
+		velocity.y = -jump_speed
 	
 	var move_input = Input.get_axis("move_left", "move_right")
 	velocity.x = move_toward(velocity.x, move_input * speed, acceleration * delta)
+	
+	_was_on_floor = is_on_floor()
 	
 	move_and_slide()
 	
@@ -54,6 +71,8 @@ func _physics_process(delta: float) -> void:
 			playback.travel("jump")
 		else:
 			playback.travel("fall")
+	
+
 
 
 func take_damage(value: int) -> void:

@@ -474,7 +474,7 @@ animation = &"fire"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ivps1"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bwjto"]
-graph_offset = Vector2(-702.28796, 62.007374)
+graph_offset = Vector2(-563.3585, -96.69785)
 nodes/movement/node = ExtResource("7_nvl01")
 nodes/movement/position = Vector2(-448, 64)
 nodes/fire/node = SubResource("AnimationNodeOneShot_ivps1")
@@ -493,7 +493,8 @@ size = Vector2(46, 16)
 
 [node name="Player" type="CharacterBody2D" unique_id=111671453]
 script = ExtResource("1_onrkg")
-jump_speed = 1000
+jump_speed = 300
+acceleration = 1000
 bullet_scene = ExtResource("2_n7ghd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2015007523]
@@ -557,3 +558,16 @@ metadata/_custom_type_script = "uid://d26yj0mh06tpn"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1063677956]
 position = Vector2(0, 38)
 shape = SubResource("RectangleShape2D_b26j0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=964291719]
+zoom = Vector2(3, 3)
+process_callback = 0
+position_smoothing_enabled = true
+
+[node name="JumpTimer" type="Timer" parent="." unique_id=2117682797]
+wait_time = 0.2
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1714992921]
+wait_time = 0.2
+one_shot = true
