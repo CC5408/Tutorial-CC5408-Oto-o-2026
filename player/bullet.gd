@@ -6,7 +6,6 @@ extends HitboxComponent
 
 func _ready() -> void:
 	#timer.timeout.connect(func(): queue_free())
-	Debug.log("weee")
 	await get_tree().create_timer(1).timeout
 	queue_free()
 

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cg5mes3dxo3c2"]
 
 [ext_resource type="Script" uid="uid://5w3kdebyrbdl" path="res://top_down/top_down_player.gd" id="1_itpn2"]
-[ext_resource type="Texture2D" uid="uid://b4xrq2ywdpuhu" path="res://sprites/top_down.png" id="2_0vgfg"]
-[ext_resource type="Texture2D" uid="uid://bgxjmp5d1kgl2" path="res://sprites/top_down_running.png" id="3_x3t4y"]
+[ext_resource type="Texture2D" uid="uid://b4xrq2ywdpuhu" path="res://assets/sprites/top_down.png" id="2_0vgfg"]
+[ext_resource type="Texture2D" uid="uid://bgxjmp5d1kgl2" path="res://assets/sprites/top_down_running.png" id="3_x3t4y"]
 [ext_resource type="Script" uid="uid://bng1gwg0xgpto" path="res://components/hitbox_component.gd" id="7_8m1xr"]
 [ext_resource type="Texture2D" uid="uid://dki0qrnh46vy0" path="res://icon.svg" id="8_t26ql"]
-[ext_resource type="AudioStream" uid="uid://4gqfbpfpbosj" path="res://sounds/freesound_crunchpixstudio-bar-increase-cartoon-funny-jump-384919.mp3" id="9_70c2a"]
+[ext_resource type="AudioStream" uid="uid://4gqfbpfpbosj" path="res://assets/audio/freesound_crunchpixstudio-bar-increase-cartoon-funny-jump-384919.mp3" id="9_70c2a"]
 [ext_resource type="Script" uid="uid://d26yj0mh06tpn" path="res://components/hurtbox_component.gd" id="10_boso7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b478c"]
