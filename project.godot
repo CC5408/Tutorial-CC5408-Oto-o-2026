@@ -23,6 +23,8 @@ buses/default_bus_layout="uid://rftqmxdjgaxm"
 
 Debug="*uid://2opxevdd6keu"
 LevelManager="*uid://btrgwi4h8pfnt"
+Game="*uid://dowi37fdqaq8h"
+AudioManager="*uid://cmk027i32vq0i"
 
 [display]
 

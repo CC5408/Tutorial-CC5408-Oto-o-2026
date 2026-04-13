@@ -38,6 +38,12 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rqugq"]
+bg_color = Color(0, 0, 0, 0.3529412)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jf26r"]
+bg_color = Color(0.15889508, 0.81, 0.07289998, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ywnoi"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -76,11 +82,16 @@ corner_detail = 5
 
 [resource]
 default_font = ExtResource("1_d4nwg")
-default_font_size = 32
+default_font_size = 48
 BlueButton/base_type = &"Button"
 BlueButton/styles/hover = SubResource("StyleBoxFlat_d4nwg")
 BlueButton/styles/normal = SubResource("StyleBoxFlat_7ct1h")
 BlueButton/styles/pressed = SubResource("StyleBoxFlat_886mr")
+HUDLabel/base_type = &"Label"
+HUDLabel/font_sizes/font_size = 128
+HealthBar/base_type = &"ProgressBar"
+HealthBar/styles/background = SubResource("StyleBoxFlat_rqugq")
+HealthBar/styles/fill = SubResource("StyleBoxFlat_jf26r")
 MarginContainer/constants/margin_bottom = 32
 MarginContainer/constants/margin_left = 32
 MarginContainer/constants/margin_right = 32

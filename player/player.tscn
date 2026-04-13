@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://4gqfbpfpbosj" path="res://assets/audio/freesound_crunchpixstudio-bar-increase-cartoon-funny-jump-384919.mp3" id="6_2hs0m"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bybf7gtnyux3s" path="res://player/movement.tres" id="7_nvl01"]
 [ext_resource type="Script" uid="uid://d26yj0mh06tpn" path="res://components/hurtbox_component.gd" id="8_dw050"]
+[ext_resource type="Script" uid="uid://blnpvqimev7d0" path="res://components/health_component.gd" id="12_ebec5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
 radius = 20.0
@@ -474,7 +475,6 @@ animation = &"fire"
 [sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_ivps1"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_bwjto"]
-graph_offset = Vector2(-563.3585, -96.69785)
 nodes/movement/node = ExtResource("7_nvl01")
 nodes/movement/position = Vector2(-448, 64)
 nodes/fire/node = SubResource("AnimationNodeOneShot_ivps1")
@@ -492,8 +492,9 @@ size = Vector2(36, 40)
 size = Vector2(46, 16)
 
 [node name="Player" type="CharacterBody2D" unique_id=111671453]
+position = Vector2(3, 1)
 script = ExtResource("1_onrkg")
-jump_speed = 300
+jump_speed = 500
 acceleration = 1000
 bullet_scene = ExtResource("2_n7ghd")
 
@@ -549,10 +550,11 @@ bus = &"SFX"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=331286407]
 shape = SubResource("RectangleShape2D_2hs0m")
 
-[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1247057305]
+[node name="HurtboxComponent" type="Area2D" parent="." unique_id=1247057305 node_paths=PackedStringArray("health_component")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("8_dw050")
+health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://d26yj0mh06tpn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1063677956]
@@ -560,7 +562,6 @@ position = Vector2(0, 38)
 shape = SubResource("RectangleShape2D_b26j0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=964291719]
-zoom = Vector2(3, 3)
 process_callback = 0
 position_smoothing_enabled = true
 
@@ -571,3 +572,18 @@ one_shot = true
 [node name="CoyoteTimer" type="Timer" parent="." unique_id=1714992921]
 wait_time = 0.2
 one_shot = true
+
+[node name="HealthComponent" type="Node" parent="." unique_id=355661053]
+script = ExtResource("12_ebec5")
+metadata/_custom_type_script = "uid://blnpvqimev7d0"
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=145562798]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 10)
+offset_left = -50.0
+offset_top = -57.0
+offset_right = 50.0
+offset_bottom = -47.0
+theme_type_variation = &"HealthBar"
+step = 1.0
+show_percentage = false

@@ -1,4 +1,12 @@
+class_name Player
 extends CharacterBody2D
+
+enum State {
+	MOVE,
+	WALL_JUMP
+}
+
+var state = State.MOVE
 
 @export var speed = 500
 @export var jump_speed = 600
@@ -18,18 +26,35 @@ var _was_on_floor: bool = false
 @onready var hitbox_component: HitboxComponent = $Pivot/HitboxComponent
 @onready var bullet_spawn_marker: Marker2D = $Pivot/BulletSpawnMarker
 @onready var coyote_timer: Timer = $CoyoteTimer
+@onready var health_bar: ProgressBar = %HealthBar
+@onready var health_component: HealthComponent = $HealthComponent
 
 
 
 func _ready() -> void:
 	hitbox_component.damage_dealt.connect(_on_damage_dealt)
-
-
+	health_component.health_changed.connect(_on_health_changed)
+	health_component.died.connect(_on_player_died)
+	health_bar.max_value = health_component.max_health
+	_on_health_changed(health_component.health)
+	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("test"):
 		LevelManager.next_level()
 
+
 func _physics_process(delta: float) -> void:
+	match state:
+		State.MOVE:
+			_move(delta)
+		State.WALL_JUMP:
+			_wall_jump(delta)
+	
+
+func _wall_jump(_delta: float) -> void:
+	pass
+
+func _move(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += get_gravity().y * delta
 	
@@ -56,6 +81,7 @@ func _physics_process(delta: float) -> void:
 	
 	if not firing and Input.is_action_just_pressed("fire"):
 		animation_tree["parameters/fire/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+		pivot.scale.x = sign(get_global_mouse_position().x - global_position.x)
 	
 	if move_input:
 		pivot.scale.x = sign(move_input)
@@ -71,16 +97,7 @@ func _physics_process(delta: float) -> void:
 			playback.travel("jump")
 		else:
 			playback.travel("fall")
-	
 
-
-
-func take_damage(value: int) -> void:
-	Debug.log("%s received %d damage" % [name, value])
-	health -= value
-	if health <= 0:
-		queue_free()
-		Debug.log("me moriii :C")
 
 func _on_damage_dealt() -> void:
 	Debug.log("I made damage")
@@ -94,3 +111,12 @@ func fire() -> void:
 	bullet_inst.global_position = bullet_spawn_marker.global_position
 	var mouse_direction = bullet_spawn_marker.global_position.direction_to(get_global_mouse_position())
 	bullet_inst.global_rotation = mouse_direction.angle()
+
+
+func _on_health_changed(value: int) -> void:
+	health_bar.value = value
+
+
+func _on_player_died() -> void:
+	queue_free()
+	Debug.log("me moriii :C")
