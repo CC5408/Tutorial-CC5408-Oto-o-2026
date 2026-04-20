@@ -37,6 +37,7 @@ func _ready() -> void:
 	health_component.died.connect(_on_player_died)
 	health_bar.max_value = health_component.max_health
 	_on_health_changed(health_component.health)
+	Game.coins = 100
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("test"):

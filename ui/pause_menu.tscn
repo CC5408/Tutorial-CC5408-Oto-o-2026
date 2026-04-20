@@ -45,6 +45,17 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Resume"
 
+[node name="SaveGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=282549867]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Save Game
+"
+
+[node name="LoadGame" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1323481633]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Load Game"
+
 [node name="Retry" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1348532524]
 unique_name_in_owner = true
 layout_mode = 2

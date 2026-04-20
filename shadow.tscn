@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bbfjghvptw3p2"]
+
+[ext_resource type="Texture2D" uid="uid://dki0qrnh46vy0" path="res://icon.svg" id="1_6pqxc"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_n2o5g"]
+polygon = PackedVector2Array(-58, -62, 58, -62, 64, 57, -62, 58)
+
+[node name="Shadow" type="Node2D" unique_id=1006337662]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=28528989]
+texture = ExtResource("1_6pqxc")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1132111959]
+occluder = SubResource("OccluderPolygon2D_n2o5g")

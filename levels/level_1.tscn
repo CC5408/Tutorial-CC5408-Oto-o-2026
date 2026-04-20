@@ -3,29 +3,77 @@
 [ext_resource type="Script" uid="uid://qihve14j1kep" path="res://levels/level_1.gd" id="1_l53as"]
 [ext_resource type="TileSet" uid="uid://bavl0y60ngm1k" path="res://levels/tile_set.tres" id="1_vn7o3"]
 [ext_resource type="PackedScene" uid="uid://dc1g2sfbw4xhv" path="res://player/player.tscn" id="2_jirdo"]
+[ext_resource type="Texture2D" uid="uid://dsm03nq154pqx" path="res://assets/sprites/The Dawn/Layers/4.png" id="3_08mmt"]
 [ext_resource type="PackedScene" uid="uid://bb17db381bnli" path="res://ui/pause_menu.tscn" id="3_bt44k"]
+[ext_resource type="Texture2D" uid="uid://c0ollfmteewet" path="res://assets/sprites/The Dawn/Layers/5.png" id="4_5ot28"]
 [ext_resource type="PackedScene" uid="uid://dsenkcn2o2beu" path="res://ui/hud.tscn" id="5_n46q3"]
 [ext_resource type="PackedScene" uid="uid://stdfajjojk45" path="res://gameplay/goal.tscn" id="6_btoec"]
 [ext_resource type="PackedScene" uid="uid://bbg3tyfgxrujp" path="res://enemies/floor_enemy.tscn" id="6_gwceb"]
 [ext_resource type="PackedScene" uid="uid://cjxh0blecs0ap" path="res://enemies/wall_enemy.tscn" id="7_l53as"]
+[ext_resource type="Texture2D" uid="uid://bjc1ngffo2sd8" path="res://assets/sprites/The Dawn/Layers/3.png" id="9_3sk1a"]
+[ext_resource type="PackedScene" uid="uid://bbfjghvptw3p2" path="res://shadow.tscn" id="9_nmsli"]
+[ext_resource type="Texture2D" uid="uid://3y55ee35wrep" path="res://assets/sprites/The Dawn/Layers/8.png" id="12_aerfg"]
 
 [node name="Level1" type="Node2D" unique_id=1046795863]
 script = ExtResource("1_l53as")
 
+[node name="Background" type="Node2D" parent="." unique_id=1753226307]
+visible = false
+
+[node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=1864387939]
+scroll_scale = Vector2(0.4, 0)
+repeat_size = Vector2(3960, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D" unique_id=994003370]
+position = Vector2(0, 181)
+texture = ExtResource("9_3sk1a")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Parallax2D" unique_id=790356152]
+position = Vector2(1980, 181)
+texture = ExtResource("9_3sk1a")
+centered = false
+flip_h = true
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background" unique_id=1151817149]
+scroll_scale = Vector2(0.6, 0)
+repeat_size = Vector2(1980, 0)
+
+[node name="4" type="Sprite2D" parent="Background/Parallax2D2" unique_id=333860965]
+position = Vector2(0, 50)
+texture = ExtResource("3_08mmt")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="Background" unique_id=365211570]
+scroll_scale = Vector2(0.8, 0)
+repeat_size = Vector2(1980, 0)
+
+[node name="5" type="Sprite2D" parent="Background/Parallax2D3" unique_id=1111114843]
+position = Vector2(0, 101)
+texture = ExtResource("4_5ot28")
+centered = false
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1703618807]
 scale = Vector2(4, 4)
-tile_map_data = PackedByteArray("AAA0ABAAAAADAAMAAAAzABAAAAACAAMAAAAyABAAAAACAAMAAAAxABAAAAACAAMAAAAwABAAAAACAAMAAAAvABAAAAACAAMAAAAuABAAAAACAAMAAAAtABAAAAACAAMAAAAsABAAAAACAAMAAAArABAAAAACAAMAAAAqABAAAAACAAMAAAApABAAAAACAAMAAAAoABAAAAACAAMAAAAnABAAAAACAAMAAAAmABAAAAACAAMAAAAlABAAAAACAAMAAAAkABAAAAACAAMAAAAjABAAAAACAAMAAAAiABAAAAACAAMAAAAhABAAAAACAAMAAAAgABAAAAACAAMAAAAfABAAAAACAAMAAAAeABAAAAACAAMAAAAdABAAAAACAAMAAAAcABAAAAACAAMAAAAbABAAAAACAAMAAAAaABAAAAACAAMAAAAZABAAAAACAAMAAAAYABAAAAACAAMAAAAXABAAAAACAAMAAAAWABAAAAACAAMAAAAVABAAAAACAAMAAAAUABAAAAACAAMAAAATABAAAAACAAMAAAASABAAAAACAAMAAAARABAAAAACAAMAAAAQABAAAAACAAMAAAAPABAAAAACAAMAAAAEABAAAAACAAMAAAADABAAAAACAAMAAAACABAAAAACAAMAAAABABAAAAACAAMAAAAAABAAAAACAAMAAAAFABAAAAACAAMAAAAGABAAAAACAAMAAAAHABAAAAACAAMAAAAIABAAAAADAAMAAAAJABAAAAAAAAIAAAAOABAAAAABAAMAAAADAA4AAQAAAAAAAQAGAA0AAQAAAAAAAQAPAA4AAQAAAAAAAQAQAA4AAQAAAAAAAQARAA4AAQAAAAAAAQASAA4AAQAAAAAAAQATAA4AAQAAAAAAAQAZAA0AAQAAAAAAAQD//xAAAAACAAMAAAD+/xAAAAACAAMAAAD9/xAAAAACAAMAAAD8/xAAAAACAAMAAAD7/xAAAAACAAMAAAD6/xAAAAACAAMAAAD5/xAAAAAAAAIAAAD5/w4AAAAAAAAAAAD5/w8AAAAAAAEAAAAJAA4AAAAAAAAAAAAJAA8AAAAAAAEAAAD1/xAAAAACAAMAAAD0/xAAAAACAAMAAADz/xAAAAACAAMAAADy/xAAAAACAAMAAADx/xAAAAACAAMAAADw/xAAAAACAAMAAADv/xAAAAACAAMAAADu/xAAAAACAAMAAADt/xAAAAACAAMAAADs/xAAAAABAAMAAAD2/xAAAAADAAMAAADz/w0AAAABAAMAAAD0/w0AAAACAAMAAAD1/w0AAAADAAMAAAA=")
+tile_map_data = PackedByteArray("AAA0ABAAAAADAAMAAAAzABAAAAACAAMAAAAyABAAAAACAAMAAAAxABAAAAACAAMAAAAwABAAAAACAAMAAAAvABAAAAACAAMAAAAuABAAAAACAAMAAAAtABAAAAACAAMAAAAsABAAAAACAAMAAAArABAAAAACAAMAAAAqABAAAAACAAMAAAApABAAAAACAAMAAAAoABAAAAACAAMAAAAnABAAAAACAAMAAAAmABAAAAACAAMAAAAlABAAAAACAAMAAAAkABAAAAACAAMAAAAjABAAAAACAAMAAAAiABAAAAACAAMAAAAhABAAAAACAAMAAAAgABAAAAACAAMAAAAfABAAAAACAAMAAAAeABAAAAACAAMAAAAdABAAAAACAAMAAAAcABAAAAACAAMAAAAbABAAAAACAAMAAAAaABAAAAACAAMAAAAZABAAAAACAAMAAAAYABAAAAACAAMAAAAXABAAAAACAAMAAAAWABAAAAACAAMAAAAVABAAAAACAAMAAAAUABAAAAACAAMAAAATABAAAAACAAMAAAASABAAAAACAAMAAAARABAAAAACAAMAAAAQABAAAAACAAMAAAAPABAAAAACAAMAAAAEABAAAAACAAMAAAADABAAAAACAAMAAAACABAAAAACAAMAAAABABAAAAACAAMAAAAAABAAAAACAAMAAAAFABAAAAACAAMAAAAGABAAAAACAAMAAAAHABAAAAACAAMAAAAIABAAAAADAAMAAAAJABAAAAAAAAIAAAAOABAAAAABAAMAAAADAA4AAQAAAAAAAQAGAA0AAQAAAAAAAQAPAA4AAQAAAAAAAQAQAA4AAQAAAAAAAQARAA4AAQAAAAAAAQASAA4AAQAAAAAAAQATAA4AAQAAAAAAAQAZAA0AAQAAAAAAAQD//xAAAAACAAMAAAD+/xAAAAACAAMAAAD9/xAAAAACAAMAAAD8/xAAAAACAAMAAAD7/xAAAAACAAMAAAD6/xAAAAACAAMAAAD5/xAAAAAAAAIAAAD5/w4AAAAAAAAAAAD5/w8AAAAAAAEAAAAJAA4AAAAAAAAAAAAJAA8AAAAAAAEAAAD1/xAAAAACAAMAAAD0/xAAAAACAAMAAADz/xAAAAACAAMAAADy/xAAAAACAAMAAADx/xAAAAACAAMAAADw/xAAAAACAAMAAADv/xAAAAACAAMAAADu/xAAAAACAAMAAADt/xAAAAACAAMAAADs/xAAAAABAAMAAAD2/xAAAAADAAMAAADz/w0AAAABAAMAAAD0/w0AAAACAAMAAAD1/w0AAAADAAMAAAAGAA8AAQAAAAAAAQA=")
 tile_set = ExtResource("1_vn7o3")
 
 [node name="Goal" parent="." unique_id=48422927 instance=ExtResource("6_btoec")]
 position = Vector2(2627, 978)
 
 [node name="Player" parent="." unique_id=111671453 instance=ExtResource("2_jirdo")]
-position = Vector2(-412, 814)
+position = Vector2(2437, 938)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1696878261]
 
 [node name="PauseMenu" parent="CanvasLayer" unique_id=1750061234 instance=ExtResource("3_bt44k")]
+offset_left = -157.0
+offset_top = 4.0
+offset_right = -157.0
+offset_bottom = 4.0
+
+[node name="Shadow" parent="CanvasLayer" unique_id=1006337662 instance=ExtResource("9_nmsli")]
+position = Vector2(342, 954)
 
 [node name="HUD" parent="." unique_id=1648690276 instance=ExtResource("5_n46q3")]
 
@@ -34,3 +82,13 @@ position = Vector2(-700, 589)
 
 [node name="WallEnemy" parent="." unique_id=1035513402 instance=ExtResource("7_l53as")]
 position = Vector2(-241, 992)
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1973782908]
+scroll_scale = Vector2(1.5, 0)
+repeat_size = Vector2(1980, 0)
+
+[node name="8" type="Sprite2D" parent="Parallax2D" unique_id=1355888393]
+modulate = Color(1, 1, 1, 0.22745098)
+position = Vector2(0, 30)
+texture = ExtResource("12_aerfg")
+centered = false

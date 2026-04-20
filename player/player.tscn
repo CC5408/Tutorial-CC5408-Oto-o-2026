@@ -12,6 +12,7 @@
 [ext_resource type="AnimationNodeStateMachine" uid="uid://bybf7gtnyux3s" path="res://player/movement.tres" id="7_nvl01"]
 [ext_resource type="Script" uid="uid://d26yj0mh06tpn" path="res://components/hurtbox_component.gd" id="8_dw050"]
 [ext_resource type="Script" uid="uid://blnpvqimev7d0" path="res://components/health_component.gd" id="12_ebec5"]
+[ext_resource type="Texture2D" uid="uid://bstkc46sgrgrr" path="res://assets/sprites/Effect and Bullet 16x16/Green Effect and Bullet 16x16.png" id="13_yllr7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
 radius = 20.0
@@ -491,6 +492,27 @@ size = Vector2(36, 40)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b26j0"]
 size = Vector2(46, 16)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_kb6p2"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kb6p2"]
+atlas = ExtResource("13_yllr7")
+region = Rect2(480, 176, 96, 32)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wodsf"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 187.28
+initial_velocity_max = 187.28
+gravity = Vector3(0, 98, 0)
+damping_min = 92.579
+damping_max = 100.00001
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
 [node name="Player" type="CharacterBody2D" unique_id=111671453]
 position = Vector2(3, 1)
 script = ExtResource("1_onrkg")
@@ -562,8 +584,9 @@ position = Vector2(0, 38)
 shape = SubResource("RectangleShape2D_b26j0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=964291719]
+position = Vector2(3, -3)
+zoom = Vector2(2, 2)
 process_callback = 0
-position_smoothing_enabled = true
 
 [node name="JumpTimer" type="Timer" parent="." unique_id=2117682797]
 wait_time = 0.2
@@ -587,3 +610,8 @@ offset_bottom = -47.0
 theme_type_variation = &"HealthBar"
 step = 1.0
 show_percentage = false
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=662017482]
+material = SubResource("CanvasItemMaterial_kb6p2")
+texture = SubResource("AtlasTexture_kb6p2")
+process_material = SubResource("ParticleProcessMaterial_wodsf")

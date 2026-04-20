@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bfdl7flwd2au" path="res://assets/sprites/Dungeon Gathering Free Version/Torch Yellow.png" id="1_8tq3u"]
 [ext_resource type="Script" uid="uid://cpj1narn0obsl" path="res://gameplay/goal.gd" id="1_t8vge"]
 [ext_resource type="AudioStream" uid="uid://2s4kbo6c4dit" path="res://assets/audio/eaglaxle-gaming-victory-464016.mp3" id="2_jo1fa"]
+[ext_resource type="Texture2D" uid="uid://c8yuiwltcynth" path="res://assets/sprites/particle.png" id="4_0i20c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tq3u"]
 size = Vector2(68, 122)
@@ -71,6 +72,41 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_l5jjd"]
+colors = PackedColorArray(0.96862745, 0.4627451, 0.13333334, 1, 1, 0.68, 0.19999999, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vj0wq"]
+gradient = SubResource("Gradient_l5jjd")
+
+[sub_resource type="Curve" id="Curve_ug0ii"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 2.273919), 0.0, 0.0, 0, 0, Vector2(0.3018868, 5), 0.0, 0.0, 0, 0, Vector2(0.5613208, 1.0812588), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_2p4gj"]
+curve = SubResource("Curve_ug0ii")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hvf6b"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 284.90002
+direction = Vector3(0, -1, 0)
+spread = 20.0
+initial_velocity_min = 148.41
+initial_velocity_max = 173.14
+gravity = Vector3(0, 200, 0)
+radial_accel_min = -20.490002
+radial_accel_max = 33.219997
+scale_curve = SubResource("CurveTexture_2p4gj")
+color_ramp = SubResource("GradientTexture1D_vj0wq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0i20c"]
+particle_flag_disable_z = true
+initial_velocity_min = 307.41998
+initial_velocity_max = 325.09
+gravity = Vector3(0, 98, 0)
+scale_min = 0.0
+
 [node name="Goal" type="Area2D" unique_id=48422927]
 script = ExtResource("1_t8vge")
 sfx = ExtResource("2_jo1fa")
@@ -84,3 +120,22 @@ position = Vector2(0, -28)
 scale = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_jcr3d")
 frame_progress = 0.11092893
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=185461391]
+process_mode = 3
+amount = 20
+texture = ExtResource("4_0i20c")
+lifetime = 2.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_hvf6b")
+
+[node name="Timer" type="Timer" parent="." unique_id=1964354492]
+process_mode = 3
+wait_time = 3.0
+one_shot = true
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=874273964]
+position = Vector2(-4, -36)
+trail_enabled = true
+trail_lifetime = 1.79
+process_material = SubResource("ParticleProcessMaterial_0i20c")

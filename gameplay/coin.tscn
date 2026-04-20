@@ -104,6 +104,9 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mudrj"]
+polygon = PackedVector2Array(-5, -4, -2, -7, 2, -7, 5, -4, 5, 0, 2, 3, -2, 3, -5, 0)
+
 [node name="Coin" type="Area2D" unique_id=1863843238]
 script = ExtResource("1_c82v4")
 
@@ -116,3 +119,6 @@ autoplay = "default"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1412679644]
 stream = ExtResource("3_mudrj")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1273990777]
+occluder = SubResource("OccluderPolygon2D_mudrj")
