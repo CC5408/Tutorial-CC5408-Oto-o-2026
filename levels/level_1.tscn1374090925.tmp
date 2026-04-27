@@ -10,15 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://stdfajjojk45" path="res://gameplay/goal.tscn" id="6_btoec"]
 [ext_resource type="PackedScene" uid="uid://bbg3tyfgxrujp" path="res://enemies/floor_enemy.tscn" id="6_gwceb"]
 [ext_resource type="Script" uid="uid://c7slpi8es7cc5" path="res://levels/tile_map_layer.gd" id="6_vjtdm"]
-[ext_resource type="PackedScene" uid="uid://i3njthtvh0u1" path="res://levels/moving_platform.tscn" id="7_7nvrk"]
 [ext_resource type="PackedScene" uid="uid://cjxh0blecs0ap" path="res://enemies/wall_enemy.tscn" id="7_l53as"]
-[ext_resource type="PackedScene" uid="uid://dyd60qsjkh7n6" path="res://gameplay/item.tscn" id="8_bgw3c"]
 [ext_resource type="Texture2D" uid="uid://bjc1ngffo2sd8" path="res://assets/sprites/The Dawn/Layers/3.png" id="9_3sk1a"]
 [ext_resource type="PackedScene" uid="uid://bbfjghvptw3p2" path="res://shadow.tscn" id="9_nmsli"]
 [ext_resource type="Texture2D" uid="uid://3y55ee35wrep" path="res://assets/sprites/The Dawn/Layers/8.png" id="12_aerfg"]
-[ext_resource type="PackedScene" uid="uid://2bnx4ammfgl8" path="res://enemies/enemy.tscn" id="12_lrvbd"]
-[ext_resource type="Resource" uid="uid://dhjjp0ssrow61" path="res://items/potion.tres" id="16_lrvbd"]
-[ext_resource type="Resource" uid="uid://26clmaaq3s5b" path="res://items/potion++.tres" id="17_oqlok"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bgw3c"]
 texture = ExtResource("5_betor")
@@ -40,43 +35,6 @@ tile_shape = 1
 tile_size = Vector2i(230, 120)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_bgw3c")
-
-[sub_resource type="Animation" id="Animation_jkxa6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MovingPlatform:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(5260, 860)]
-}
-
-[sub_resource type="Animation" id="Animation_w75he"]
-resource_name = "default"
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MovingPlatform:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(2.378416, 13.454327),
-"update": 0,
-"values": [Vector2(5260, 860), Vector2(6237, 461)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_udfhf"]
-_data = {
-&"RESET": SubResource("Animation_jkxa6"),
-&"default": SubResource("Animation_w75he")
-}
 
 [node name="Level1" type="Node2D" unique_id=1046795863]
 script = ExtResource("1_l53as")
@@ -124,25 +82,11 @@ tile_map_data = PackedByteArray("AAAPAAQAAQABAAAAAAAPAAUAAQABAAAAAAAPAAYAAQABAAA
 tile_set = SubResource("TileSet_lrvbd")
 script = ExtResource("6_vjtdm")
 
-[node name="MovingPlatform" parent="." unique_id=778342961 instance=ExtResource("7_7nvrk")]
-position = Vector2(5260, 860)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MovingPlatform" unique_id=1094356217]
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_udfhf")
-autoplay = &"default"
-
-[node name="Player" parent="MovingPlatform" unique_id=111671453 instance=ExtResource("2_jirdo")]
-position = Vector2(30, 21)
-
 [node name="Goal" parent="." unique_id=48422927 instance=ExtResource("6_btoec")]
 position = Vector2(2627, 978)
 
-[node name="Item" parent="." unique_id=1752819629 instance=ExtResource("8_bgw3c")]
-position = Vector2(4499, 675)
-
-[node name="Enemy" parent="." unique_id=1615866232 instance=ExtResource("12_lrvbd")]
-position = Vector2(4418, 541)
+[node name="Player" parent="." unique_id=111671453 instance=ExtResource("2_jirdo")]
+position = Vector2(4298, 700)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1696878261]
 
@@ -157,7 +101,7 @@ position = Vector2(342, 954)
 
 [node name="HUD" parent="." unique_id=1648690276 instance=ExtResource("5_n46q3")]
 
-[node name="FloorEnemy" parent="." unique_id=1710057519 instance=ExtResource("6_gwceb")]
+[node name="FloorEnemy" parent="." unique_id=1615866232 instance=ExtResource("6_gwceb")]
 position = Vector2(-700, 589)
 
 [node name="WallEnemy" parent="." unique_id=1035513402 instance=ExtResource("7_l53as")]
@@ -175,14 +119,3 @@ centered = false
 
 [node name="LunarLandscapeExports0010BuildingBlock2" type="Sprite2D" parent="." unique_id=596860953]
 position = Vector2(457, -22)
-
-[node name="Item2" parent="." unique_id=1061480396 instance=ExtResource("8_bgw3c")]
-position = Vector2(4705, 682)
-
-[node name="Item4" parent="." unique_id=289343927 instance=ExtResource("8_bgw3c")]
-position = Vector2(4608, 627)
-data = ExtResource("17_oqlok")
-
-[node name="Item3" parent="." unique_id=490747536 instance=ExtResource("8_bgw3c")]
-position = Vector2(4591, 771)
-data = ExtResource("16_lrvbd")

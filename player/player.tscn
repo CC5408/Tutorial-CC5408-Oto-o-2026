@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://d26yj0mh06tpn" path="res://components/hurtbox_component.gd" id="8_dw050"]
 [ext_resource type="Script" uid="uid://blnpvqimev7d0" path="res://components/health_component.gd" id="12_ebec5"]
 [ext_resource type="Texture2D" uid="uid://bstkc46sgrgrr" path="res://assets/sprites/Effect and Bullet 16x16/Green Effect and Bullet 16x16.png" id="13_yllr7"]
+[ext_resource type="PackedScene" uid="uid://d34vlnbdrjj07" path="res://ui/ui_inventory.tscn" id="14_kb6p2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_onrkg"]
 radius = 20.0
@@ -514,7 +515,7 @@ anim_speed_min = 1.0
 anim_speed_max = 1.0
 
 [node name="Player" type="CharacterBody2D" unique_id=111671453]
-position = Vector2(3, 1)
+motion_mode = 1
 script = ExtResource("1_onrkg")
 jump_speed = 500
 acceleration = 1000
@@ -615,3 +616,7 @@ show_percentage = false
 material = SubResource("CanvasItemMaterial_kb6p2")
 texture = SubResource("AtlasTexture_kb6p2")
 process_material = SubResource("ParticleProcessMaterial_wodsf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=48002463]
+
+[node name="UIInventory" parent="CanvasLayer" unique_id=264907620 instance=ExtResource("14_kb6p2")]

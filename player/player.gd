@@ -16,7 +16,6 @@ var state = State.MOVE
 
 var max_health = 20
 var health = 20
-var _was_on_floor: bool = false
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -56,27 +55,16 @@ func _wall_jump(_delta: float) -> void:
 	pass
 
 func _move(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y += get_gravity().y * delta
+
 	
-	if not is_on_floor() and _was_on_floor:
-		coyote_timer.start()
-	
-	if (is_on_floor() or not coyote_timer.is_stopped()) and Input.is_action_just_pressed("jump") and jump_timer.is_stopped():
-		jump_timer.start()
-		jump_stream_player.play()
-	if Input.is_action_just_released("jump"):
-		jump_timer.stop()
-	if not jump_timer.is_stopped():
-		#velocity.y = -jump_speed * (jump_timer.time_left / jump_timer.wait_time)
-		velocity.y = -jump_speed
-	
-	var move_input = Input.get_axis("move_left", "move_right")
-	velocity.x = move_toward(velocity.x, move_input * speed, acceleration * delta)
-	
-	_was_on_floor = is_on_floor()
+	var move_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	velocity = velocity.move_toward(move_input * speed, acceleration * delta)
 	
 	move_and_slide()
+	
+	
+	if Input.is_action_just_pressed("use"):
+		Game.use_item(self)
 	
 	var firing = animation_tree["parameters/fire/active"]
 	
@@ -84,21 +72,14 @@ func _move(delta: float) -> void:
 		animation_tree["parameters/fire/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 		pivot.scale.x = sign(get_global_mouse_position().x - global_position.x)
 	
-	if move_input:
-		pivot.scale.x = sign(move_input)
+	if move_input.x:
+		pivot.scale.x = sign(move_input.x)
 	
 	# animation
-	if is_on_floor():
-		if abs(velocity.x) > 10 or move_input:
-			playback.travel("run")
-		else:
-			playback.travel("idle")
+	if abs(velocity.x) > 10 or not move_input.is_zero_approx():
+		playback.travel("run")
 	else:
-		if velocity.y < 0:
-			playback.travel("jump")
-		else:
-			playback.travel("fall")
-
+		playback.travel("idle")
 
 func _on_damage_dealt() -> void:
 	Debug.log("I made damage")

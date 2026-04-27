@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://i3njthtvh0u1"]
+
+[ext_resource type="Texture2D" uid="uid://cvthokajnc1v2" path="res://assets/sprites/Free Content/LunarLandscape_Exports_001-4-GroundTile-7.png" id="1_uu147"]
+
+[node name="MovingPlatform" type="AnimatableBody2D" unique_id=778342961]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2115631806]
+polygon = PackedVector2Array(-194, 14, 14, -116, 226, 2, 8, 112, -183, 30, -224, 77, 51, 191, 304, -5, -30, -204, -304, 19)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1018074071]
+texture = ExtResource("1_uu147")
+hframes = 4

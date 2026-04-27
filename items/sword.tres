@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://c4yhhvhhgflne"]
+
+[ext_resource type="Texture2D" uid="uid://byi1tnm0fr2um" path="res://assets/sprites/Dungeon Gathering Free Version/Structure.png" id="1_bikib"]
+[ext_resource type="Script" uid="uid://dxqq2dcs75yx1" path="res://items/item_data.gd" id="1_es5ut"]
+
+[resource]
+script = ExtResource("1_es5ut")
+display_name = "Sword"
+description = "This is a sword"
+image = ExtResource("1_bikib")
+price = 120
+rarity = 3
+metadata/_custom_type_script = "uid://dxqq2dcs75yx1"

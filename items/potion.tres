@@ -1,0 +1,12 @@
+[gd_resource type="Resource" format=3 uid="uid://dhjjp0ssrow61"]
+
+[ext_resource type="Texture2D" uid="uid://cc6lvvv2glams" path="res://assets/sprites/Dungeon Gathering Free Version/Potion 1.png" id="1_8h85v"]
+[ext_resource type="Script" uid="uid://cpj3s0cwkd8ev" path="res://items/healing_item_data.gd" id="2_8h85v"]
+
+[resource]
+script = ExtResource("2_8h85v")
+amount = 20
+display_name = "Potion"
+description = "It heals you"
+image = ExtResource("1_8h85v")
+metadata/_custom_type_script = "uid://dxqq2dcs75yx1"

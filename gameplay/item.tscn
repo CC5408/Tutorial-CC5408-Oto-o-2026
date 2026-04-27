@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dyd60qsjkh7n6"]
+
+[ext_resource type="Script" uid="uid://chym784dl8180" path="res://gameplay/item.gd" id="1_clq6s"]
+[ext_resource type="Resource" uid="uid://c4yhhvhhgflne" path="res://items/sword.tres" id="2_hwlpr"]
+[ext_resource type="Texture2D" uid="uid://byi1tnm0fr2um" path="res://assets/sprites/Dungeon Gathering Free Version/Structure.png" id="3_7twuo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_clq6s"]
+radius = 30.805843
+
+[sub_resource type="LabelSettings" id="LabelSettings_7twuo"]
+font_size = 36
+
+[node name="Item" type="Area2D" unique_id=1752819629]
+script = ExtResource("1_clq6s")
+data = ExtResource("2_hwlpr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1111777569]
+shape = SubResource("CircleShape2D_clq6s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1749250493]
+scale = Vector2(2, 2)
+texture = ExtResource("3_7twuo")
+
+[node name="Label" type="Label" parent="." unique_id=640456396]
+offset_left = -86.0
+offset_top = -42.0
+offset_right = 88.0
+text = "Sword"
+label_settings = SubResource("LabelSettings_7twuo")
+horizontal_alignment = 1

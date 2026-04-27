@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://d34vlnbdrjj07"]
+
+[ext_resource type="Script" uid="uid://ca23jcc6g4ybi" path="res://ui/ui_inventory.gd" id="1_snfsq"]
+[ext_resource type="PackedScene" uid="uid://2w3qy135jag5" path="res://ui/inventory_item.tscn" id="2_j1sfx"]
+
+[node name="UIInventory" type="Control" unique_id=264907620]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_snfsq")
+inventory_item_scene = ExtResource("2_j1sfx")
+
+[node name="InventoryContainer" type="VBoxContainer" parent="." unique_id=238375618]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
