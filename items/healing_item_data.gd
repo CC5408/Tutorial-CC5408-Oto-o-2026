@@ -3,5 +3,5 @@ extends ItemData
 
 @export var amount: int
 
-func action(player: Player) -> void:
+func action(player: IsometricPlayer) -> void:
 	player.health_component.health += amount

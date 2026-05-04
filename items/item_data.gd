@@ -15,5 +15,5 @@ enum Rarity {
 @export var price: int
 @export var rarity: Rarity
 
-func action(player: Player) -> void:
+func action(player: IsometricPlayer) -> void:
 	pass

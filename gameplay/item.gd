@@ -16,7 +16,7 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	var player = body as Player
+	var player = body as IsometricPlayer
 	if player:
 		queue_free()
 		Game.add_item(data)

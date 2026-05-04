@@ -63,8 +63,8 @@ func _move(delta: float) -> void:
 	move_and_slide()
 	
 	
-	if Input.is_action_just_pressed("use"):
-		Game.use_item(self)
+	#if Input.is_action_just_pressed("use"):
+		#Game.use_item(self)
 	
 	var firing = animation_tree["parameters/fire/active"]
 	

@@ -28,7 +28,7 @@ func remove_item(item_data: ItemData):
 	inventory_changed.emit()
 
 		
-func use_item(player: Player) -> void:
+func use_item(player: IsometricPlayer) -> void:
 	for item_data: ItemData in inventory.keys():
 		var healing_item_data = item_data as HealingItemData
 		if healing_item_data:
