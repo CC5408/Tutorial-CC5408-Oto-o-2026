@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://d34vlnbdrjj07"]
 
 [ext_resource type="Script" uid="uid://ca23jcc6g4ybi" path="res://ui/ui_inventory.gd" id="1_snfsq"]
-[ext_resource type="PackedScene" uid="uid://2w3qy135jag5" path="res://ui/inventory_item.tscn" id="2_j1sfx"]
+[ext_resource type="PackedScene" uid="uid://2w3qy135jag5" path="res://ui/ui_inventory_item.tscn" id="2_j1sfx"]
+[ext_resource type="PackedScene" uid="uid://bdqcg57cgy5or" path="res://ui/inventory/ui_item_slot.tscn" id="3_10oyd"]
 
 [node name="UIInventory" type="Control" unique_id=264907620]
 layout_mode = 3
@@ -12,8 +13,30 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_snfsq")
 inventory_item_scene = ExtResource("2_j1sfx")
+item_slot_scene = ExtResource("3_10oyd")
 
-[node name="InventoryContainer" type="VBoxContainer" parent="." unique_id=238375618]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1394419488]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -150.0
+offset_right = 218.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=131683385]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="SlotContainer" type="GridContainer" parent="PanelContainer/MarginContainer" unique_id=2103152395]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 6

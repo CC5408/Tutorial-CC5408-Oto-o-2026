@@ -472,6 +472,7 @@ position = Vector2(2166, 1204)
 
 [node name="Item" parent="." unique_id=1752819629 instance=ExtResource("8_bgw3c")]
 position = Vector2(800, 771)
+quantity = 0
 
 [node name="YSort" type="Node2D" parent="." unique_id=1007597809]
 y_sort_enabled = true
@@ -483,15 +484,40 @@ position = Vector2(1491, 764)
 position = Vector2(1306, 539)
 data = ExtResource("17_oqlok")
 
+[node name="Item5" parent="YSort" unique_id=977727536 instance=ExtResource("8_bgw3c")]
+position = Vector2(1242, 639)
+data = ExtResource("17_oqlok")
+
+[node name="Item6" parent="YSort" unique_id=286844168 instance=ExtResource("8_bgw3c")]
+position = Vector2(1357, 627)
+data = ExtResource("17_oqlok")
+
 [node name="Item3" parent="YSort" unique_id=490747536 instance=ExtResource("8_bgw3c")]
-position = Vector2(1192, 875)
+position = Vector2(1256, 948)
+data = ExtResource("16_lrvbd")
+
+[node name="Item7" parent="YSort" unique_id=1702796949 instance=ExtResource("8_bgw3c")]
+position = Vector2(1373, 914)
+data = ExtResource("16_lrvbd")
+quantity = 62
+
+[node name="Item8" parent="YSort" unique_id=1743424486 instance=ExtResource("8_bgw3c")]
+position = Vector2(1138, 823)
+data = ExtResource("16_lrvbd")
+
+[node name="Item9" parent="YSort" unique_id=847322990 instance=ExtResource("8_bgw3c")]
+position = Vector2(1110, 930)
+data = ExtResource("16_lrvbd")
+
+[node name="Item10" parent="YSort" unique_id=801644615 instance=ExtResource("8_bgw3c")]
+position = Vector2(996, 872)
 data = ExtResource("16_lrvbd")
 
 [node name="Enemy" parent="YSort" unique_id=1615866232 instance=ExtResource("12_lrvbd")]
 position = Vector2(849, 598)
 
 [node name="IsometricPlayer" parent="YSort" unique_id=1406307129 instance=ExtResource("19_7nvrk")]
-position = Vector2(874, 418)
+position = Vector2(1293, 817)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1696878261]
 
@@ -516,6 +542,8 @@ position = Vector2(-241, 992)
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1973782908]
 scroll_scale = Vector2(1.5, 0)
 repeat_size = Vector2(1980, 0)
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
 
 [node name="8" type="Sprite2D" parent="Parallax2D" unique_id=1355888393]
 modulate = Color(1, 1, 1, 0.023529412)

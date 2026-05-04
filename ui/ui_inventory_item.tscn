@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://2w3qy135jag5"]
 
-[ext_resource type="Script" uid="uid://bta1yrvlrxhse" path="res://ui/inventory_item.gd" id="1_i131u"]
+[ext_resource type="Script" uid="uid://bta1yrvlrxhse" path="res://ui/ui_inventory_item.gd" id="1_i131u"]
 [ext_resource type="Resource" uid="uid://c4yhhvhhgflne" path="res://items/sword.tres" id="2_jjund"]
 [ext_resource type="Texture2D" uid="uid://byi1tnm0fr2um" path="res://assets/sprites/Dungeon Gathering Free Version/Structure.png" id="3_tpd5w"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jjund"]
 font_size = 72
 
-[node name="InventoryItem" type="HBoxContainer" unique_id=1213520251]
+[node name="UIInventoryItem" type="HBoxContainer" unique_id=1213520251]
 script = ExtResource("1_i131u")
 data = ExtResource("2_jjund")
 quantity = -1

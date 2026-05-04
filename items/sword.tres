@@ -10,4 +10,5 @@ description = "This is a sword"
 image = ExtResource("1_bikib")
 price = 120
 rarity = 3
+stack_size = 1
 metadata/_custom_type_script = "uid://dxqq2dcs75yx1"

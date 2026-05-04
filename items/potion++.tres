@@ -9,4 +9,5 @@ amount = 40
 display_name = "Potion ++"
 description = "It heals you"
 image = ExtResource("1_2yndq")
+stack_size = 2
 metadata/_custom_type_script = "uid://dxqq2dcs75yx1"

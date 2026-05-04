@@ -1,5 +1,5 @@
 @tool
-class_name InventoryItem
+class_name UIInventoryItem
 extends HBoxContainer
 
 @export var data: ItemData:

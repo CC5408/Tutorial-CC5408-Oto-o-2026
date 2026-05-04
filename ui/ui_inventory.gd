@@ -1,20 +1,24 @@
+@tool
 extends Control
 
 @export var inventory_item_scene: PackedScene
+@export var item_slot_scene: PackedScene
+@export var slots: int = 24:
+	set(value):
+		slots = value
+		create_slots()
 
-@onready var inventory_container: VBoxContainer = $InventoryContainer
+@onready var slot_container: GridContainer = %SlotContainer
 
 func _ready() -> void:
-	Game.inventory_changed.connect(update)
+	create_slots()
 
 
-func update():
-	for child in inventory_container.get_children():
+func create_slots() -> void:
+	for child in slot_container.get_children():
 		child.queue_free()
-	if not inventory_item_scene:
-		return
-	for item_data in Game.inventory.keys():
-		var inventory_item_inst: InventoryItem = inventory_item_scene.instantiate()
-		inventory_container.add_child(inventory_item_inst)
-		inventory_item_inst.data = item_data
-		inventory_item_inst.quantity = Game.inventory[item_data]
+	for i in slots:
+		var item_slot_inst = item_slot_scene.instantiate()
+		slot_container.add_child(item_slot_inst)
+
+	

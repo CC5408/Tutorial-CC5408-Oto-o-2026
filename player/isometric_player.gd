@@ -25,13 +25,10 @@ func _physics_process(_delta: float) -> void:
 	var vertical_input = Input.get_axis("move_up", "move_down")
 	var isometric_move_input = Vector2(move_input.x - move_input.y, (move_input.x + move_input.y) / 2)
 	
-	if horizontal_input == 0 and vertical_input == 0:
+	if move_input.is_zero_approx():
 		velocity = Vector2.ZERO
 	elif (horizontal_input != 0 and vertical_input == 0) or (horizontal_input == 0 and vertical_input != 0):
 		velocity = isometric_move_input * speed
-	
-	move_and_slide()
-	
 	
 	var attacking = animation_tree["parameters/attack_one_shot/active"]
 	

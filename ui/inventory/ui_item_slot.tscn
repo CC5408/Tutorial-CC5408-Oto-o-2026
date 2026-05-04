@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bdqcg57cgy5or"]
+
+[ext_resource type="Script" uid="uid://dr5uaby7hjcqo" path="res://ui/inventory/ui_item_slot.gd" id="1_lqm2n"]
+[ext_resource type="Texture2D" uid="uid://cc6lvvv2glams" path="res://assets/sprites/Dungeon Gathering Free Version/Potion 1.png" id="1_qh0hm"]
+
+[node name="UIItemSlot" type="Panel" unique_id=926341200]
+custom_minimum_size = Vector2(64, 64)
+script = ExtResource("1_lqm2n")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2146795924]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("1_qh0hm")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="." unique_id=1976663535]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -42.0
+offset_right = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 24
+text = "XX"
+horizontal_alignment = 2
+vertical_alignment = 2
