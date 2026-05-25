@@ -178,6 +178,7 @@ node_connections = [&"output", 0, &"attack_one_shot", &"attack_one_shot", 0, &"m
 size = Vector2(34, 78)
 
 [node name="IsometricPlayer" type="CharacterBody2D" unique_id=1406307129]
+motion_mode = 1
 script = ExtResource("1_2fhne")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=289130844]

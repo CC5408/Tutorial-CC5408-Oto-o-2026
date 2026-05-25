@@ -618,5 +618,7 @@ texture = SubResource("AtlasTexture_kb6p2")
 process_material = SubResource("ParticleProcessMaterial_wodsf")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=48002463]
+visible = false
 
 [node name="UIInventory" parent="CanvasLayer" unique_id=264907620 instance=ExtResource("14_kb6p2")]
+visible = false

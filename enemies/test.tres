@@ -1,0 +1,61 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://dx332gl1gfwi8"]
+
+[ext_resource type="Script" uid="uid://baq3o0tpry5g8" path="res://ai/tasks/debug_log.gd" id="1_fxeoo"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_5xk1p"]
+var/weapon/name = &"weapon"
+var/weapon/type = 1
+var/weapon/value = false
+var/weapon/hint = 0
+var/weapon/hint_string = ""
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_5xk1p"]
+text = "one"
+
+[sub_resource type="BTFail" id="BTFail_fxeoo"]
+children = [SubResource("BTConsolePrint_5xk1p")]
+
+[sub_resource type="BTSequence" id="BTSequence_gecph"]
+children = [SubResource("BTFail_fxeoo")]
+
+[sub_resource type="BBVariant" id="BBVariant_5xk1p"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckVar" id="BTCheckVar_fxeoo"]
+variable = &"weapon"
+value = SubResource("BBVariant_5xk1p")
+
+[sub_resource type="BTWait" id="BTWait_5xk1p"]
+
+[sub_resource type="BTAction" id="BTAction_gecph"]
+script = ExtResource("1_fxeoo")
+text = "two"
+
+[sub_resource type="BTSequence" id="BTSequence_s7ady"]
+children = [SubResource("BTCheckVar_fxeoo"), SubResource("BTWait_5xk1p"), SubResource("BTAction_gecph")]
+
+[sub_resource type="BTWait" id="BTWait_gecph"]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_s7ady"]
+text = "three"
+
+[sub_resource type="BBVariant" id="BBVariant_h2h5r"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTSetVar" id="BTSetVar_65yvj"]
+variable = &"weapon"
+value = SubResource("BBVariant_h2h5r")
+
+[sub_resource type="BTSequence" id="BTSequence_4kls1"]
+children = [SubResource("BTWait_gecph"), SubResource("BTConsolePrint_s7ady"), SubResource("BTSetVar_65yvj")]
+
+[sub_resource type="BTSelector" id="BTSelector_h2h5r"]
+children = [SubResource("BTSequence_gecph"), SubResource("BTSequence_s7ady"), SubResource("BTSequence_4kls1")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_5xk1p")
+root_task = SubResource("BTSelector_h2h5r")

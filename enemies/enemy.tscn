@@ -4,9 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://kcrstson0ogr" path="res://assets/sprites/Dungeon Gathering Free Version/Vase Shine Anim.png" id="2_a6vjd"]
 [ext_resource type="Script" uid="uid://d26yj0mh06tpn" path="res://components/hurtbox_component.gd" id="2_orwns"]
 [ext_resource type="Script" uid="uid://bng1gwg0xgpto" path="res://components/hitbox_component.gd" id="4_a6vjd"]
+[ext_resource type="BehaviorTree" uid="uid://dx332gl1gfwi8" path="res://enemies/test.tres" id="5_07tka"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_07tka"]
-radius = 34.132095
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_07tka"]
 size = Vector2(76, 72)
@@ -14,7 +14,13 @@ size = Vector2(76, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3t1x0"]
 size = Vector2(44, 16)
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_3t1x0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3t1x0"]
+radius = 350.0
+
 [node name="Enemy" type="CharacterBody2D" unique_id=1615866232]
+motion_mode = 1
 script = ExtResource("1_orwns")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1981859268]
@@ -49,3 +55,19 @@ hframes = 16
 frame = 4
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1956524116]
+
+[node name="BTPlayer" type="BTPlayer" parent="." unique_id=1269014095]
+behavior_tree = ExtResource("5_07tka")
+blackboard_plan = SubResource("BlackboardPlan_3t1x0")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=2022019106]
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="DetectionArea2D" type="Area2D" parent="." unique_id=353976639]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea2D" unique_id=1066745711]
+shape = SubResource("CircleShape2D_3t1x0")
+
+[node name="FollowTimer" type="Timer" parent="." unique_id=1630377255]
+wait_time = 0.1

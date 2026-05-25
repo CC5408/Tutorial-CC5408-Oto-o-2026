@@ -14,6 +14,7 @@ extends CharacterBody2D
 
 
 func _ready() -> void:
+	Game.player = self
 	health_bar.max_value = health_component.max_health
 	health_component.health_changed.connect(_on_health_changed)
 	_on_health_changed(health_component.health)

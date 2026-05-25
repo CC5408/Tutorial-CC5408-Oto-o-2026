@@ -12,6 +12,7 @@ extends Control
 
 func _ready() -> void:
 	create_slots()
+	hide()
 
 
 func create_slots() -> void:

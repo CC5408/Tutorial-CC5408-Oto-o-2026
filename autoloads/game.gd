@@ -5,6 +5,8 @@ signal coins_changed(value: int)
 signal inventory_changed()
 signal slot_updated(index: int)
 
+var player: IsometricPlayer = null
+
 
 var coins: int = 0:
 	set = set_coins
@@ -68,21 +70,52 @@ func add_item(item: InventoryItem):
 
 	slot_updated.emit(available_slot_index)
 
-func move_item(index: int, item: InventoryItem) -> void:
+func move_item(index: int, item: InventoryItem, quantity: int) -> void:
 	var previous_item_slot = item._slot_index
 	var current_item = inventory[index]
-	if current_item:
-		inventory[previous_item_slot] = current_item
-		current_item._slot_index = previous_item_slot
-		slot_updated.emit(previous_item_slot)
-		
-	inventory[index] = item
-	item._slot_index = index
-	slot_updated.emit(index)
+
 	
-	if not current_item:
-		inventory[previous_item_slot] = null
+	var not_moved_quantity = item._quantity - quantity
+	
+	if current_item and current_item._item_data == item._item_data:
+		var total_quantity: int = current_item._quantity + item._quantity
+		var new_quantity = max(total_quantity, item._item_data.stack_size)
+		current_item._quantity = new_quantity
+		var remaining = total_quantity - new_quantity
+		if remaining > 0:
+			item._quantity = remaining
+		else:
+			inventory.remove_at(index)
+		slot_updated.emit(index)
 		slot_updated.emit(previous_item_slot)
+	else:
+		if current_item:
+			inventory[previous_item_slot] = current_item
+			current_item._slot_index = previous_item_slot
+			slot_updated.emit(previous_item_slot)
+			
+		inventory[index] = item
+		item._slot_index = index
+		slot_updated.emit(index)
+		
+		if not current_item:
+			if item._quantity == quantity:
+				inventory[previous_item_slot] = null
+				slot_updated.emit(previous_item_slot)
+			else:
+				item._quantity -= quantity
+				slot_updated.emit(index)
+				
+				var new_invetory_item = InventoryItem.new(item.get_item_data(), previous_item_slot, not_moved_quantity)
+				inventory[previous_item_slot] = new_invetory_item
+				slot_updated.emit(previous_item_slot)
+				
+		else:
+			current_item._quantity -= not_moved_quantity
+			slot_updated.emit(previous_item_slot)
+			slot_updated.emit(index)
+				
+		
 
 		 
 

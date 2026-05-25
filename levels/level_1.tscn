@@ -6,10 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c0ollfmteewet" path="res://assets/sprites/The Dawn/Layers/5.png" id="4_5ot28"]
 [ext_resource type="PackedScene" uid="uid://dsenkcn2o2beu" path="res://ui/hud.tscn" id="5_n46q3"]
 [ext_resource type="PackedScene" uid="uid://stdfajjojk45" path="res://gameplay/goal.tscn" id="6_btoec"]
-[ext_resource type="PackedScene" uid="uid://bbg3tyfgxrujp" path="res://enemies/floor_enemy.tscn" id="6_gwceb"]
 [ext_resource type="Script" uid="uid://c7slpi8es7cc5" path="res://levels/tile_map_layer.gd" id="6_vjtdm"]
 [ext_resource type="PackedScene" uid="uid://i3njthtvh0u1" path="res://levels/moving_platform.tscn" id="7_7nvrk"]
-[ext_resource type="PackedScene" uid="uid://cjxh0blecs0ap" path="res://enemies/wall_enemy.tscn" id="7_l53as"]
 [ext_resource type="PackedScene" uid="uid://dyd60qsjkh7n6" path="res://gameplay/item.tscn" id="8_bgw3c"]
 [ext_resource type="Texture2D" uid="uid://bjc1ngffo2sd8" path="res://assets/sprites/The Dawn/Layers/3.png" id="9_3sk1a"]
 [ext_resource type="PackedScene" uid="uid://bbfjghvptw3p2" path="res://shadow.tscn" id="9_nmsli"]
@@ -20,11 +18,18 @@
 [ext_resource type="PackedScene" uid="uid://ca5y1ckf1kyw1" path="res://player/isometric_player.tscn" id="19_7nvrk"]
 [ext_resource type="Texture2D" uid="uid://cgopixgbnbym6" path="res://assets/sprites/TinyTactics_BattleKitI_v1_0/20240420tinyTacticsTileset00.png" id="23_ryfpa"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_lrvbd"]
+vertices = PackedVector2Array(16, 0, 0, 8, -16, 0, 0, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)])
+agent_radius = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4knja"]
 texture = ExtResource("23_ryfpa")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, -8)
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_lrvbd")
 1:0/0 = 0
 1:0/0/texture_origin = Vector2i(0, -8)
 2:0/0 = 0
@@ -373,6 +378,7 @@ texture_region_size = Vector2i(32, 32)
 tile_shape = 1
 tile_size = Vector2i(32, 16)
 physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_4knja")
 
 [sub_resource type="Animation" id="Animation_jkxa6"]
@@ -416,7 +422,6 @@ _data = {
 script = ExtResource("1_l53as")
 
 [node name="Background" type="Node2D" parent="." unique_id=1753226307]
-visible = false
 
 [node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=1864387939]
 scroll_scale = Vector2(0.4, 0)
@@ -516,6 +521,15 @@ data = ExtResource("16_lrvbd")
 [node name="Enemy" parent="YSort" unique_id=1615866232 instance=ExtResource("12_lrvbd")]
 position = Vector2(849, 598)
 
+[node name="Enemy2" parent="YSort" unique_id=172429963 instance=ExtResource("12_lrvbd")]
+position = Vector2(954, 419)
+
+[node name="Enemy3" parent="YSort" unique_id=270664404 instance=ExtResource("12_lrvbd")]
+position = Vector2(794, 470)
+
+[node name="Enemy4" parent="YSort" unique_id=2144731654 instance=ExtResource("12_lrvbd")]
+position = Vector2(828, 358)
+
 [node name="IsometricPlayer" parent="YSort" unique_id=1406307129 instance=ExtResource("19_7nvrk")]
 position = Vector2(1293, 817)
 
@@ -532,12 +546,6 @@ offset_bottom = 4.0
 position = Vector2(342, 954)
 
 [node name="HUD" parent="." unique_id=1648690276 instance=ExtResource("5_n46q3")]
-
-[node name="FloorEnemy" parent="." unique_id=1710057519 instance=ExtResource("6_gwceb")]
-position = Vector2(-700, 589)
-
-[node name="WallEnemy" parent="." unique_id=1035513402 instance=ExtResource("7_l53as")]
-position = Vector2(-241, 992)
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1973782908]
 scroll_scale = Vector2(1.5, 0)
