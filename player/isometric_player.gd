@@ -41,9 +41,6 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and not animation_tree["parameters/attack_one_shot/active"]:
 		animation_tree["parameters/attack_one_shot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 	
-	if Input.is_action_just_pressed("use"):
-		Game.use_item(self)
-	
 	# animation
 	
 	if move_input.is_zero_approx():

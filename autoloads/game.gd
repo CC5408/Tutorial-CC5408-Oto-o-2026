@@ -1,9 +1,9 @@
-class_name UIItemSlot
+class_name UISlot
 extends Node
 
 signal coins_changed(value: int)
-signal inventory_changed()
-signal slot_updated(index: int)
+signal inventory_slot_changed(value: int)
+
 
 var player: IsometricPlayer = null
 
@@ -11,113 +11,67 @@ var player: IsometricPlayer = null
 var coins: int = 0:
 	set = set_coins
 	
-class InventoryItem:
-	var _item_data: ItemData
-	var _slot_index: int
-	var _quantity: int
+class Slot:
+	var item_data: ItemData
+	var amount: int:
+		set(value):
+			amount = max(value, 0)
+			if amount == 0:
+				item_data = null
 	
-	func _init(item_data: ItemData, slot_index: int, quantity: int) -> void:
-		_item_data = item_data
-		_slot_index = slot_index
-		_quantity = quantity
-	
-	func get_slot_index() -> int:
-		return _slot_index
-	
-	func get_quantity() -> int:
-		return _quantity
-		
-	func get_item_data() -> ItemData:
-		return _item_data
+	func is_empty() -> bool:
+		return item_data == null
 
-var inventory: Array[InventoryItem]
+
+var inventory: Array[Slot]
 
 func _ready() -> void:
 	for i in 24:
-		inventory.resize(24)
+		inventory.push_back(Slot.new())
 
 func set_coins(value: int) -> void:
 	coins = value
 	coins_changed.emit(coins)
 
-func add_item(item: InventoryItem):
-	# find available slot
-	var available_slot_index = -1
-	
-	for i: int in inventory.size():
-		var inventory_item: InventoryItem = inventory[i]
-		if not inventory_item:
-			if available_slot_index == -1:
-				available_slot_index = i
-		elif inventory_item._item_data == item._item_data:
-			var total_quantity: int = inventory_item._quantity + item._quantity
-			if  total_quantity <= item._item_data.stack_size:
-				inventory_item._quantity += item._quantity
-				slot_updated.emit(i)
-				return
-			else:
-				var remainig = total_quantity - item._item_data.stack_size 
-				inventory_item._quantity = item._item_data.stack_size
-				item._quantity = remainig
-				slot_updated.emit(i)
-				
-	
-	if available_slot_index == -1:
-		return
-	
-	item._slot_index = available_slot_index
-	inventory[available_slot_index] = item
+func add_item(item_data: ItemData, amount: int) -> int:
+	# fill same item
+	for i in inventory.size():
+		var slot: Slot = inventory[i]
+		if amount <= 0:
+			break
+		if slot.item_data == item_data:
+			var diff = mini(item_data.stack_size - slot.amount, amount)
+			slot.amount += diff
+			amount -= diff
+			inventory_slot_changed.emit(i)
 
-	slot_updated.emit(available_slot_index)
+	# fill empty slots
+	for i in inventory.size():
+		var slot: Slot = inventory[i]
+		if amount <= 0:
+			break
+		if slot.is_empty():
+			slot.item_data = item_data
+			var diff = mini(item_data.stack_size, amount)
+			slot.amount = diff
+			amount -= diff
+			inventory_slot_changed.emit(i)
+	return amount
 
-func move_item(index: int, item: InventoryItem, quantity: int) -> void:
-	var previous_item_slot = item._slot_index
-	var current_item = inventory[index]
-
-	
-	var not_moved_quantity = item._quantity - quantity
-	
-	if current_item and current_item._item_data == item._item_data:
-		var total_quantity: int = current_item._quantity + item._quantity
-		var new_quantity = max(total_quantity, item._item_data.stack_size)
-		current_item._quantity = new_quantity
-		var remaining = total_quantity - new_quantity
-		if remaining > 0:
-			item._quantity = remaining
-		else:
-			inventory.remove_at(index)
-		slot_updated.emit(index)
-		slot_updated.emit(previous_item_slot)
+func move_item(from: int, to: int) -> void:
+	var from_slot = inventory[from]
+	var to_slot = inventory[to]
+	# if same item
+	if from_slot.item_data == to_slot.item_data:
+		var diff = mini(to_slot.item_data.stack_size - to_slot.amount, from_slot.amount)
+		to_slot.amount += diff
+		from_slot.amount -= diff
 	else:
-		if current_item:
-			inventory[previous_item_slot] = current_item
-			current_item._slot_index = previous_item_slot
-			slot_updated.emit(previous_item_slot)
-			
-		inventory[index] = item
-		item._slot_index = index
-		slot_updated.emit(index)
-		
-		if not current_item:
-			if item._quantity == quantity:
-				inventory[previous_item_slot] = null
-				slot_updated.emit(previous_item_slot)
-			else:
-				item._quantity -= quantity
-				slot_updated.emit(index)
-				
-				var new_invetory_item = InventoryItem.new(item.get_item_data(), previous_item_slot, not_moved_quantity)
-				inventory[previous_item_slot] = new_invetory_item
-				slot_updated.emit(previous_item_slot)
-				
-		else:
-			current_item._quantity -= not_moved_quantity
-			slot_updated.emit(previous_item_slot)
-			slot_updated.emit(index)
-				
-		
-
-		 
+		inventory[to] = from_slot
+		inventory[from] = to_slot
+	
+	inventory_slot_changed.emit(from)
+	inventory_slot_changed.emit(to)
 
 
 func remove_item(item_data: ItemData):
@@ -129,10 +83,8 @@ func remove_item(item_data: ItemData):
 	#inventory_changed.emit()
 
 		
-func use_item(player: IsometricPlayer) -> void:
-	pass
-	#for item_data: ItemData in inventory.keys():
-		#var healing_item_data = item_data as HealingItemData
-		#if healing_item_data:
-			#healing_item_data.action(player)
-			#remove_item(item_data)
+func use_item(index: int) -> void:
+	if not inventory[index].is_empty() and player:
+		inventory[index].item_data.action(player)
+		inventory[index].amount -= 1
+		inventory_slot_changed.emit(index)

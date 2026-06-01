@@ -8,7 +8,7 @@ extends Area2D
 			update()
 @export var quantity: int = 1:
 	set(value):
-		quantity = value
+		quantity = max(value, 1)
 		update()
 
 
@@ -26,8 +26,7 @@ func _on_body_entered(body: Node2D) -> void:
 	var player = body as IsometricPlayer
 	if player:
 		queue_free()
-		var inventory_item = Game.InventoryItem.new(data, -1, quantity)
-		Game.add_item(inventory_item)
+		Game.add_item(data, quantity)
 
 
 func update():

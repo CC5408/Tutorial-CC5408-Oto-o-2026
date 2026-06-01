@@ -12,21 +12,21 @@ var target_player: IsometricPlayer
 @onready var follow_timer: Timer = $FollowTimer
 
 func _ready() -> void:
-	#detection_area_2d.body_entered.connect(_on_body_entered)
-	#detection_area_2d.body_exited.connect(_on_body_exited)
+	detection_area_2d.body_entered.connect(_on_body_entered)
+	detection_area_2d.body_exited.connect(_on_body_exited)
 	follow_timer.timeout.connect(_update_target_position)
 	navigation_agent_2d.velocity_computed.connect(_on_velocity_computed)
 	
-	await get_tree().create_timer(1).timeout
-	target_player = Game.player
-	_update_target_position()
-	follow_timer.start()
+	#await get_tree().create_timer(1).timeout
+	#target_player = Game.player
+	#_update_target_position()
+	#follow_timer.start()
 	
 func _physics_process(delta: float) -> void:
 	
 	if target_player:
 		var horizontal_direction = sign(target_player.global_position.x - global_position.x)
-		Debug.log(horizontal_direction, 2 * delta)
+		#Debug.log(horizontal_direction, 2 * delta)
 	if navigation_agent_2d.is_target_reached():
 		velocity = Vector2.ZERO
 		move_and_slide()

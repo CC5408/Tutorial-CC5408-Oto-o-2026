@@ -477,7 +477,6 @@ position = Vector2(2166, 1204)
 
 [node name="Item" parent="." unique_id=1752819629 instance=ExtResource("8_bgw3c")]
 position = Vector2(800, 771)
-quantity = 0
 
 [node name="YSort" type="Node2D" parent="." unique_id=1007597809]
 y_sort_enabled = true
@@ -490,7 +489,7 @@ position = Vector2(1306, 539)
 data = ExtResource("17_oqlok")
 
 [node name="Item5" parent="YSort" unique_id=977727536 instance=ExtResource("8_bgw3c")]
-position = Vector2(1242, 639)
+position = Vector2(1242, 635)
 data = ExtResource("17_oqlok")
 
 [node name="Item6" parent="YSort" unique_id=286844168 instance=ExtResource("8_bgw3c")]
@@ -515,7 +514,7 @@ position = Vector2(1110, 930)
 data = ExtResource("16_lrvbd")
 
 [node name="Item10" parent="YSort" unique_id=801644615 instance=ExtResource("8_bgw3c")]
-position = Vector2(996, 872)
+position = Vector2(996, 865)
 data = ExtResource("16_lrvbd")
 
 [node name="Enemy" parent="YSort" unique_id=1615866232 instance=ExtResource("12_lrvbd")]
