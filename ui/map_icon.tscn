@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dlk56261r3wwe"]
+
+[ext_resource type="Texture2D" uid="uid://bwk0mgo4wk1nf" path="res://assets/sprites/a.jpg" id="1_7ckgu"]
+[ext_resource type="Script" uid="uid://bfqwy4nffi8kq" path="res://ui/map_icon.gd" id="2_vbfd3"]
+
+[node name="MapIcon" type="Sprite2D" unique_id=1272028127]
+scale = Vector2(0.04347826, 0.04347826)
+texture = ExtResource("1_7ckgu")
+script = ExtResource("2_vbfd3")

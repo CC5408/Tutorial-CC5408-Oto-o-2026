@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d34vlnbdrjj07" path="res://ui/ui_inventory.tscn" id="4_guevt"]
 [ext_resource type="Script" uid="uid://d26yj0mh06tpn" path="res://components/hurtbox_component.gd" id="5_n2bin"]
 [ext_resource type="Script" uid="uid://blnpvqimev7d0" path="res://components/health_component.gd" id="6_hqrac"]
+[ext_resource type="Texture2D" uid="uid://ce7yocm682bo0" path="res://assets/sprites/eyes.png" id="7_hqrac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_66myl"]
 radius = 20.0
@@ -177,7 +178,31 @@ node_connections = [&"output", 0, &"attack_one_shot", &"attack_one_shot", 0, &"m
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uecl5"]
 size = Vector2(34, 78)
 
-[node name="IsometricPlayer" type="CharacterBody2D" unique_id=1406307129]
+[sub_resource type="SkeletonModification2DFABRIK" id="SkeletonModification2DFABRIK_hqrac"]
+target_nodepath = NodePath("Marker2D")
+fabrik_data_chain_length = 5
+joint_data/0/bone_index = 0
+joint_data/0/bone2d_node = NodePath("Bone2D")
+joint_data/1/bone_index = 1
+joint_data/1/bone2d_node = NodePath("Bone2D/Bone2D")
+joint_data/1/magnet_position = Vector2(0, 0)
+joint_data/2/bone_index = 2
+joint_data/2/bone2d_node = NodePath("Bone2D/Bone2D/Bone2D")
+joint_data/2/magnet_position = Vector2(0, 0)
+joint_data/3/bone_index = 3
+joint_data/3/bone2d_node = NodePath("Bone2D/Bone2D/Bone2D/Bone2D")
+joint_data/3/magnet_position = Vector2(0, 0)
+joint_data/4/bone_index = 4
+joint_data/4/bone2d_node = NodePath("Bone2D/Bone2D/Bone2D/Bone2D/Bone2D")
+joint_data/4/magnet_position = Vector2(0, 0)
+joint_data/4/use_target_rotation = false
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_uecl5"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DFABRIK_hqrac")
+
+[node name="IsometricPlayer" type="CharacterBody2D" unique_id=1406307129 groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_2fhne")
 
@@ -242,3 +267,42 @@ offset_bottom = -94.0
 theme_type_variation = &"HealthBar"
 step = 1.0
 show_percentage = false
+
+[node name="Skeleton2D" type="Skeleton2D" parent="." unique_id=1030147486]
+position = Vector2(-23, -25)
+modification_stack = SubResource("SkeletonModificationStack2D_uecl5")
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D" unique_id=399360805]
+rest = Transform2D(1, 0, 0, 1, 0, 0)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D" unique_id=1387078205]
+position = Vector2(20, 0)
+rest = Transform2D(1, 0, 0, 1, 20, 0)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D/Bone2D" unique_id=665774060]
+position = Vector2(20, 0)
+rest = Transform2D(1, 0, 0, 1, 20, 0)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D/Bone2D/Bone2D" unique_id=1610588885]
+position = Vector2(20, 0)
+rest = Transform2D(1, 0, 0, 1, 20, 0)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D/Bone2D/Bone2D/Bone2D" unique_id=1899799984]
+position = Vector2(20, 0)
+rest = Transform2D(1, 0, 0, 1, 20, 0)
+metadata/_local_pose_override_enabled_ = true
+
+[node name="Marker2D" type="Marker2D" parent="Skeleton2D" unique_id=669091166]
+position = Vector2(-29, -24)
+
+[node name="Polygon2D" type="Polygon2D" parent="Skeleton2D" unique_id=1792544654]
+position = Vector2(-13, -16)
+texture = ExtResource("7_hqrac")
+skeleton = NodePath("..")
+polygon = PackedVector2Array(3.9365005, 34.91214, 6.0257416, 15.412573, 5.496155, 2.378559, 36.201645, 8.393036, 56.93576, 1.7454567, 84.00091, 1.2706299, 98.404, 7.601658, 113.123634, 1.7454567, 124.202934, 2.5368347, 124.83604, 26.911293, 111.540886, 23.270954, 102.83572, 29.28543, 87.3247, 29.28543, 61.209206, 28.177502, 36.201645, 21.688198)
+uv = PackedVector2Array(13.251663, 27.227844, 5.021328, 17.098202, 5.496155, 2.378559, 36.201645, 8.393036, 56.93576, 1.7454567, 84.00091, 1.2706299, 98.404, 7.601658, 113.123634, 1.7454567, 124.202934, 2.5368347, 124.83604, 26.911293, 111.540886, 23.270954, 102.83572, 29.28543, 87.3247, 29.28543, 61.209206, 28.177502, 36.201645, 21.688198)
+bones = ["Bone2D", PackedFloat32Array(1, 1, 1, 0.42000002, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.42000002), "Bone2D/Bone2D", PackedFloat32Array(0, 0, 0, 0.64, 0.43, 0, 0, 0, 0, 0, 0, 0, 0, 0.43, 0.64), "Bone2D/Bone2D/Bone2D", PackedFloat32Array(0, 0, 0, 0, 0.26, 0, 0, 0, 0, 0, 0, 0, 0, 0.26, 0), "Bone2D/Bone2D/Bone2D/Bone2D", PackedFloat32Array(0, 0, 0, 0, 0, 0.77, 0.56, 0, 0, 0, 0, 0.56, 0.77, 0, 0), "Bone2D/Bone2D/Bone2D/Bone2D/Bone2D", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0.14, 1, 1, 1, 1, 0.14, 0, 0, 0)]

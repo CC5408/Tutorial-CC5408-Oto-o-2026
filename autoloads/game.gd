@@ -7,6 +7,8 @@ signal inventory_slot_changed(value: int)
 
 var player: IsometricPlayer = null
 
+var last_checkpoint_position: Vector2
+var has_valid_checkpoint: bool = false
 
 var coins: int = 0:
 	set = set_coins

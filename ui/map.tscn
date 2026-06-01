@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cor5pesi6uv28"]
+
+[ext_resource type="Script" uid="uid://o1rdme2b10g6" path="res://ui/map.gd" id="1_73axm"]
+[ext_resource type="Texture2D" uid="uid://bwk0mgo4wk1nf" path="res://assets/sprites/a.jpg" id="2_e7weq"]
+[ext_resource type="Texture2D" uid="uid://kcrstson0ogr" path="res://assets/sprites/Dungeon Gathering Free Version/Vase Shine Anim.png" id="3_grr5j"]
+[ext_resource type="PackedScene" uid="uid://dlk56261r3wwe" path="res://ui/map_icon.tscn" id="4_grr5j"]
+[ext_resource type="TileSet" uid="uid://hyymdqi3nske" path="res://levels/isometric_tile_set.tres" id="5_uv4r8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv4r8"]
+atlas = ExtResource("3_grr5j")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_grr5j"]
+bg_color = Color(0.25882354, 0.25882354, 0.25882354, 0.57254905)
+corner_radius_top_left = 150
+corner_radius_top_right = 150
+corner_radius_bottom_right = 150
+corner_radius_bottom_left = 150
+
+[node name="Map" type="Control" unique_id=1514622250]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_73axm")
+player_icon = ExtResource("2_e7weq")
+enemy_icon = SubResource("AtlasTexture_uv4r8")
+map_icon_scene = ExtResource("4_grr5j")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1656373308]
+clip_children = 2
+layout_mode = 1
+offset_left = 54.0
+offset_top = 34.0
+offset_right = 354.0
+offset_bottom = 334.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_grr5j")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=432511380]
+layout_mode = 2
+
+[node name="Origin" type="Control" parent="PanelContainer/MarginContainer" unique_id=1025512305]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TileMapLayer" type="TileMapLayer" parent="PanelContainer/MarginContainer/Origin" unique_id=95253595]
+y_sort_enabled = true
+tile_set = ExtResource("5_uv4r8")
+collision_enabled = false

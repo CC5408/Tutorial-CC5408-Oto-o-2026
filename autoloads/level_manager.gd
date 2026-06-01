@@ -14,6 +14,7 @@ func start() -> void:
 
 
 func next_level() -> void:
+	Game.has_valid_checkpoint = false
 	current_level += 1
 	if current_level < levels.size():
 		get_tree().change_scene_to_packed(levels[current_level])

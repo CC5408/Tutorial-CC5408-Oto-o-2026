@@ -19,9 +19,10 @@ size = Vector2(44, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_3t1x0"]
 radius = 350.0
 
-[node name="Enemy" type="CharacterBody2D" unique_id=1615866232]
+[node name="Enemy" type="CharacterBody2D" unique_id=1615866232 groups=["enemy"]]
 motion_mode = 1
 script = ExtResource("1_orwns")
+speed = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1981859268]
 position = Vector2(0, -1)
@@ -62,7 +63,6 @@ blackboard_plan = SubResource("BlackboardPlan_3t1x0")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=2022019106]
 avoidance_enabled = true
-debug_enabled = true
 
 [node name="DetectionArea2D" type="Area2D" parent="." unique_id=353976639]
 
