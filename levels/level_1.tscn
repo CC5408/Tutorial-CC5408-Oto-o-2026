@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://neiwlcqd1png" path="res://gameplay/checkpoint.tscn" id="18_oqlok"]
 [ext_resource type="PackedScene" uid="uid://ca5y1ckf1kyw1" path="res://player/isometric_player.tscn" id="19_7nvrk"]
 [ext_resource type="PackedScene" uid="uid://cor5pesi6uv28" path="res://ui/map.tscn" id="19_jkxa6"]
+[ext_resource type="Shader" uid="uid://c2vb6cdyscu37" path="res://levels/crt.gdshader" id="20_jkxa6"]
 [ext_resource type="Texture2D" uid="uid://cgopixgbnbym6" path="res://assets/sprites/TinyTactics_BattleKitI_v1_0/20240420tinyTacticsTileset00.png" id="23_ryfpa"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lrvbd"]
@@ -420,6 +421,30 @@ _data = {
 &"default": SubResource("Animation_w75he")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w75he"]
+shader = ExtResource("20_jkxa6")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.1830000086925
+shader_parameter/scanlines_width = 0.1090000051775
+shader_parameter/grille_opacity = 0.41200001957
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 11.7110005562725
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.38000001805
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.3750000178125
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.138000006555
+
 [node name="Level1" type="Node2D" unique_id=1046795863]
 script = ExtResource("1_l53as")
 
@@ -479,45 +504,54 @@ position = Vector2(3263, 1787)
 
 [node name="Item" parent="." unique_id=1752819629 instance=ExtResource("8_bgw3c")]
 position = Vector2(800, 771)
+amount = 1
 
 [node name="YSort" type="Node2D" parent="." unique_id=1007597809]
 y_sort_enabled = true
 
 [node name="Item2" parent="YSort" unique_id=1061480396 instance=ExtResource("8_bgw3c")]
 position = Vector2(1491, 764)
+amount = 1
 
 [node name="Item4" parent="YSort" unique_id=289343927 instance=ExtResource("8_bgw3c")]
 position = Vector2(1306, 539)
 data = ExtResource("17_oqlok")
+amount = 1
 
 [node name="Item5" parent="YSort" unique_id=977727536 instance=ExtResource("8_bgw3c")]
 position = Vector2(1242, 635)
 data = ExtResource("17_oqlok")
+amount = 1
 
 [node name="Item6" parent="YSort" unique_id=286844168 instance=ExtResource("8_bgw3c")]
 position = Vector2(1357, 627)
 data = ExtResource("17_oqlok")
+amount = 1
 
 [node name="Item3" parent="YSort" unique_id=490747536 instance=ExtResource("8_bgw3c")]
 position = Vector2(1256, 948)
 data = ExtResource("16_lrvbd")
+amount = 1
 
 [node name="Item7" parent="YSort" unique_id=1702796949 instance=ExtResource("8_bgw3c")]
 position = Vector2(1373, 914)
 data = ExtResource("16_lrvbd")
-quantity = 62
+amount = 1
 
 [node name="Item8" parent="YSort" unique_id=1743424486 instance=ExtResource("8_bgw3c")]
 position = Vector2(1138, 823)
 data = ExtResource("16_lrvbd")
+amount = 1
 
 [node name="Item9" parent="YSort" unique_id=847322990 instance=ExtResource("8_bgw3c")]
 position = Vector2(1110, 930)
 data = ExtResource("16_lrvbd")
+amount = 1
 
 [node name="Item10" parent="YSort" unique_id=801644615 instance=ExtResource("8_bgw3c")]
 position = Vector2(996, 865)
 data = ExtResource("16_lrvbd")
+amount = 1
 
 [node name="Enemy" parent="YSort" unique_id=1615866232 instance=ExtResource("12_lrvbd")]
 position = Vector2(849, 598)
@@ -574,3 +608,15 @@ position = Vector2(615, 296)
 
 [node name="Map" parent="CanvasLayer2" unique_id=1514622250 node_paths=PackedStringArray("level_tile_map") instance=ExtResource("19_jkxa6")]
 level_tile_map = NodePath("../../TileMapLayer")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer3" type="CanvasLayer" parent="." unique_id=2063162565]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer3" unique_id=1189837595]
+material = SubResource("ShaderMaterial_w75he")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

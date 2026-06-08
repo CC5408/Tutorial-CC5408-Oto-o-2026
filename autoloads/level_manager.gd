@@ -2,9 +2,12 @@ extends Node
 
 @export var main_menu_scene: PackedScene
 @export var credits_scene: PackedScene
+@export var settings_scene: PackedScene
 @export var levels: Array[PackedScene]
 
 var current_level = 0
+
+var current_level_scene: Level
 
 
 func start() -> void:
@@ -28,3 +31,7 @@ func main_menu() -> void:
 
 func credits() -> void:
 	get_tree().change_scene_to_packed(credits_scene)
+
+
+func settings () -> void:
+	get_tree().change_scene_to_packed(settings_scene)

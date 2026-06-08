@@ -3,11 +3,13 @@ extends Control
 @onready var start: Button = %Start
 @onready var quit: Button = %Quit
 @onready var credits: Button = %Credits
+@onready var settings: Button = %Settings
 
 func _ready() -> void:
 	start.pressed.connect(_on_start_pressed)
 	quit.pressed.connect(_on_quit_pressed)
 	credits.pressed.connect(_on_credits_pressed)
+	settings.pressed.connect(func() -> void: LevelManager.settings())
 
 
 func _on_start_pressed() -> void:

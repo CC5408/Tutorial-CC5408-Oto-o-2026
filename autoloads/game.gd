@@ -23,6 +23,10 @@ class Slot:
 	
 	func is_empty() -> bool:
 		return item_data == null
+	
+	func clear() -> void:
+		item_data = null
+		amount = 0
 
 
 var inventory: Array[Slot]
@@ -76,13 +80,9 @@ func move_item(from: int, to: int) -> void:
 	inventory_slot_changed.emit(to)
 
 
-func remove_item(item_data: ItemData):
-	if not inventory.has(item_data):
-		return
-	#inventory[item_data] -= 1
-	#if inventory[item_data] == 0:
-		#inventory.erase(item_data)
-	#inventory_changed.emit()
+func remove_item(index: int):
+	inventory[index].clear()
+	inventory_slot_changed.emit(index)
 
 		
 func use_item(index: int) -> void:

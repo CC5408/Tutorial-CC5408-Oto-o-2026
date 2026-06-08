@@ -33,7 +33,6 @@ func _on_inventory_slot_changed(value: int) -> void:
 
 func _get_drag_data(_at_position: Vector2) -> Variant:
 	var slot: Game.Slot = Game.inventory[index]
-	
 	if slot.is_empty():
 		return null
 	var preview = duplicate()

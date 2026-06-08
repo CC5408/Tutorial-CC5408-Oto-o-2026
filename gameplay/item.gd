@@ -1,4 +1,5 @@
 @tool
+class_name Item
 extends Area2D
 
 @export var data: ItemData:
@@ -6,15 +7,15 @@ extends Area2D
 		data = value
 		if data:
 			update()
-@export var quantity: int = 1:
+@export var amount: int = 1:
 	set(value):
-		quantity = max(value, 1)
+		amount = max(value, 1)
 		update()
 
 
 @onready var label: Label = $Label
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var quantity_label: Label = %QuantityLabel
+@onready var amount_label: Label = %QuantityLabel
 
 
 func _ready() -> void:
@@ -25,8 +26,11 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	var player = body as IsometricPlayer
 	if player:
-		queue_free()
-		Game.add_item(data, quantity)
+		var remaining = Game.add_item(data, amount)
+		if not remaining:
+			queue_free()
+		else:
+			amount = remaining
 
 
 func update():
@@ -34,5 +38,5 @@ func update():
 		label.text = data.display_name
 	if sprite_2d:
 		sprite_2d.texture = data.image
-	if quantity_label:
-		quantity_label.text = str(quantity)
+	if amount_label:
+		amount_label.text = str(amount)

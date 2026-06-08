@@ -13,6 +13,7 @@ font_size = 36
 [node name="Item" type="Area2D" unique_id=1752819629]
 script = ExtResource("1_clq6s")
 data = ExtResource("2_hwlpr")
+amount = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1111777569]
 shape = SubResource("CircleShape2D_clq6s")
@@ -29,7 +30,7 @@ text = "Sword"
 label_settings = SubResource("LabelSettings_7twuo")
 horizontal_alignment = 1
 
-[node name="QuantityLabel" type="Label" parent="." unique_id=1544157826]
+[node name="AmountLabel" type="Label" parent="." unique_id=1544157826]
 unique_name_in_owner = true
 offset_left = -15.0
 offset_top = 1.0

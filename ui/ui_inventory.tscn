@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ca23jcc6g4ybi" path="res://ui/ui_inventory.gd" id="1_snfsq"]
 [ext_resource type="PackedScene" uid="uid://bdqcg57cgy5or" path="res://ui/inventory/ui_slot.tscn" id="3_10oyd"]
+[ext_resource type="Script" uid="uid://vonp8kkvce7" path="res://ui/drop_zone.gd" id="3_ow82y"]
+[ext_resource type="PackedScene" uid="uid://dyd60qsjkh7n6" path="res://gameplay/item.tscn" id="4_ow82y"]
 
 [node name="UIInventory" type="Control" unique_id=264907620]
 layout_mode = 3
@@ -13,9 +15,18 @@ grow_vertical = 2
 script = ExtResource("1_snfsq")
 slot_scene = ExtResource("3_10oyd")
 
+[node name="DropZone" type="Control" parent="." unique_id=720662800]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ow82y")
+item_scene = ExtResource("4_ow82y")
+
 [node name="SlotPanel" type="PanelContainer" parent="." unique_id=1394419488]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -43,6 +54,7 @@ columns = 6
 
 [node name="ItemSlotPanel" type="PanelContainer" parent="." unique_id=774877361]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
