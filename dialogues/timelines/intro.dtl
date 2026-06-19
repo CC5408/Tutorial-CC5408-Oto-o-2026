@@ -1,0 +1,22 @@
+Bienvienido a este mundo
+join godot center [animation="Zoom Center In" length="1.0" wait="true"]
+godot: Aquí te podras encontrar con muchas cosas
+godot: Hay un malo muy malo que se está robando las cosas
+godot: Tu misión es recuperarlas
+- Yo?
+	godot: Si tu
+	- yo no fui
+		godot: quien fue
+		leave godot [animation="Bounce Out" length="1.0"]
+		[wait time="1.0"]
+		join godot center [animation="Zoom Center In" length="1.0" wait="true"]
+		jump skip
+- Que cosas?
+	godot: Money, mucho money
+	audio "res://assets/audio/coin_drop.mp3"
+- Un godot que habla?
+	godot: Si
+- Mucho texto
+	jump skip
+label skip
+godot: Buena suerte!

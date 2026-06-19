@@ -4,12 +4,14 @@ extends Control
 @onready var quit: Button = %Quit
 @onready var credits: Button = %Credits
 @onready var settings: Button = %Settings
+@onready var tutorial: Button = %Tutorial
 
 func _ready() -> void:
 	start.pressed.connect(_on_start_pressed)
 	quit.pressed.connect(_on_quit_pressed)
 	credits.pressed.connect(_on_credits_pressed)
 	settings.pressed.connect(func() -> void: LevelManager.settings())
+	tutorial.pressed.connect(func() -> void: LevelManager.tutorial())
 
 
 func _on_start_pressed() -> void:

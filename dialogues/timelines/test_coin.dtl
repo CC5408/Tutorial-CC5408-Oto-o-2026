@@ -1,0 +1,4 @@
+if Game.coins >= 5:
+	wow muchas monedas
+else:
+	pobre, quítate

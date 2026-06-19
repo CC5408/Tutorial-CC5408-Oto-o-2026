@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	var player: Player = body as Player
+	var player: IsometricPlayer = body as IsometricPlayer
 	if player:
 		monitoring = false
 		Game.coins += 1

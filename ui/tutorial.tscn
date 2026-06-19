@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://tkks3i0qikfn"]
+
+[node name="Tutorial" type="Control" unique_id=2122497244]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=431113410]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -81.5
+offset_right = 35.0
+offset_bottom = 81.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=2001453886]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1906760335]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=577216614]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "Tutorial"
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=177446617]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 2
+bbcode_enabled = true
+text = "Your objetive is to kill the very bad boss.
+
+[wave]Movement: [/wave] WASD
+[wave]Attack: [/wave] Left Mouse Click
+
+[img]res://icon.svg[/img]"

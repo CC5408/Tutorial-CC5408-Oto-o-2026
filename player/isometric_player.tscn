@@ -205,6 +205,7 @@ modifications/0 = SubResource("SkeletonModification2DFABRIK_hqrac")
 [node name="IsometricPlayer" type="CharacterBody2D" unique_id=1406307129 groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_2fhne")
+speed = 1024
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=289130844]
 scale = Vector2(4, 4)

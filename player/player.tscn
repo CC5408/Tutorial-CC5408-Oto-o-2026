@@ -517,6 +517,7 @@ anim_speed_max = 1.0
 [node name="Player" type="CharacterBody2D" unique_id=111671453]
 motion_mode = 1
 script = ExtResource("1_onrkg")
+speed = 2000
 jump_speed = 500
 acceleration = 1000
 bullet_scene = ExtResource("2_n7ghd")

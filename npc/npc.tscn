@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dahpg100qfaue"]
+
+[ext_resource type="Texture2D" uid="uid://dki0qrnh46vy0" path="res://icon.svg" id="1_2xp5l"]
+[ext_resource type="Script" uid="uid://c8meu1gnex5q1" path="res://npc/npc.gd" id="1_nhy3c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2xp5l"]
+radius = 28.284271
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nhy3c"]
+radius = 132.9812
+
+[node name="NPC" type="CharacterBody2D" unique_id=761755943]
+motion_mode = 1
+script = ExtResource("1_nhy3c")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=200506158]
+position = Vector2(0, -36)
+texture = ExtResource("1_2xp5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=989071114]
+shape = SubResource("CircleShape2D_2xp5l")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=49414391]
+
+[node name="Timer" type="Timer" parent="." unique_id=442783379]
+autostart = true
+
+[node name="DialogueArea" type="Area2D" parent="." unique_id=624356720]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueArea" unique_id=1115999667]
+position = Vector2(0, -34)
+shape = SubResource("CircleShape2D_nhy3c")

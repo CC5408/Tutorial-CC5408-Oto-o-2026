@@ -1,0 +1,4 @@
+join godot center [animation="Slide From Right"]
+godot: Shinyyyy
+godot: Quizás deberías recolectarlas
+leave godot [animation="Slide To Left"]
