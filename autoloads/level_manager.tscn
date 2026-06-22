@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://btrgwi4h8pfnt"]
 
 [ext_resource type="Script" uid="uid://bp3luwqyl8b4h" path="res://autoloads/level_manager.gd" id="1_swoet"]
-[ext_resource type="PackedScene" uid="uid://ysxmx7ksrswb" path="res://levels/level_1.tscn" id="2_jmqug"]
 [ext_resource type="PackedScene" uid="uid://byk7mffodrktd" path="res://ui/main_menu.tscn" id="2_stu7j"]
 [ext_resource type="PackedScene" uid="uid://crfin475mvk1e" path="res://ui/credits.tscn" id="3_gn3j0"]
-[ext_resource type="PackedScene" uid="uid://dow0bv7ac0spj" path="res://levels/level_2.tscn" id="3_stu7j"]
 [ext_resource type="PackedScene" uid="uid://bbjbe8q7vgj5c" path="res://ui/settings.tscn" id="4_gty5d"]
 [ext_resource type="PackedScene" uid="uid://tkks3i0qikfn" path="res://ui/tutorial.tscn" id="5_nkaav"]
 [ext_resource type="PackedScene" uid="uid://cgas3ietp4umw" path="res://levels/tutorial.tscn" id="6_53vxa"]
 [ext_resource type="PackedScene" uid="uid://c08bukt45ue80" path="res://levels/intro.tscn" id="6_vg1pt"]
+[ext_resource type="PackedScene" uid="uid://g1humh8fsvbt" path="res://levels/tutorial_2.tscn" id="8_53vxa"]
+[ext_resource type="PackedScene" uid="uid://dp1t8cy3no8n2" path="res://levels/ending.tscn" id="9_vg1pt"]
 
 [node name="LevelManager" type="Node" unique_id=929241974]
 script = ExtResource("1_swoet")
@@ -16,4 +16,4 @@ main_menu_scene = ExtResource("2_stu7j")
 credits_scene = ExtResource("3_gn3j0")
 settings_scene = ExtResource("4_gty5d")
 tutorial_scene = ExtResource("5_nkaav")
-levels = Array[PackedScene]([ExtResource("6_vg1pt"), ExtResource("6_53vxa"), ExtResource("2_jmqug"), ExtResource("3_stu7j")])
+levels = Array[PackedScene]([ExtResource("6_vg1pt"), ExtResource("6_53vxa"), ExtResource("8_53vxa"), ExtResource("9_vg1pt")])

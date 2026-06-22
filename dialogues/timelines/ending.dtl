@@ -1,0 +1,10 @@
+join godot center
+if Game.coins >= 10:
+	godot: Lo hiciste!!!!1!!!
+	godot: Salvaste el reino
+else:
+	godot: Oh no!
+	leave godot [animation="Slide To Left" wait="true"]
+	join godot center [animation="Slide From Right"]
+	godot: Por tu culpa todos murieron
+	leave godot [animation="Zoom Out" length="2.0" wait="true"]

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b47emt5a80ngo"]
+
+[ext_resource type="Texture2D" uid="uid://dki0qrnh46vy0" path="res://icon.svg" id="1_ohkj7"]
+[ext_resource type="Script" uid="uid://bvk6o8mox6hwm" path="res://gameplay/button.gd" id="1_q4k5v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 102.0
+
+[node name="Button" type="Node2D" unique_id=1771868454]
+script = ExtResource("1_q4k5v")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1665235073]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=302070343]
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=669996882]
+texture = ExtResource("1_ohkj7")
+
+[node name="Label" type="Label" parent="." unique_id=1625583314]
+offset_left = -78.0
+offset_top = -116.0
+offset_right = 78.0
+offset_bottom = -74.0
+text = "Press E"
+horizontal_alignment = 1
