@@ -64,8 +64,10 @@ func create_branches() -> void:
 			total_branches += 1
 			if total_branches >= branch_amount:
 				break
-	
 
 func display_room() -> void:
-	for i in height:
-		print(room[i])
+	for y in height:
+		var row = []
+		for x in width:
+			row.push_back(room[x][y])
+		print(row)
